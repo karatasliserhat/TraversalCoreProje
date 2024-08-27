@@ -3,25 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{468409C5-A402-4365-9E27-2E02899126A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraversalCoreProje.WebAPI", "TraversalCoreProje.WebAPI\TraversalCoreProje.WebAPI.csproj", "{F704FD6F-A725-4CEC-BC2F-5EEB70F93904}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraversolCoreProje.WebUI", "UI\TraversolCoreProje.WebUI\TraversolCoreProje.WebUI.csproj", "{FD9DE6AF-9B2F-4D3B-8672-7A282F9429D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraversolCoreProje.WebUI", "TraversolCoreProje.WebUI\TraversolCoreProje.WebUI.csproj", "{391B672F-DC37-415B-829B-2AF911BD79C1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{23B81FC8-FD44-46D2-A91F-B7E1E1840CD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraversolCoreProje.Dto", "TraversolCoreProje.Dto\TraversolCoreProje.Dto.csproj", "{DD5A8E1A-BC33-457F-B86B-3BA937A70EC1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{DCAAF1D3-E746-462F-A05A-F53EB595E2D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraversolCoreProje.DataAccessLayer", "TraversolCoreProje.DataAccessLayer\TraversolCoreProje.DataAccessLayer.csproj", "{4A80208D-7A50-45D9-9812-4C20D1147B6A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{F68471F6-5B5F-44FD-8EFB-C1AD764D0FFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraversalCoreProje.CoreLayer", "TraversalCoreProje.CoreLayer\TraversalCoreProje.CoreLayer.csproj", "{0C50D072-CB9D-4AAB-A351-244BCCCB5A2C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dto", "Dto", "{FF48D21A-93E4-4E28-9ADA-8789AF3A0DB2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraversolCoreProje.Dto", "Dto\TraversolCoreProje.Dto\TraversolCoreProje.Dto.csproj", "{97F0D8D7-7E3A-4B9D-BB80-5759E41D4550}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraversolCoreProje.DataAccessLayer", "DataAccess\TraversolCoreProje.DataAccessLayer\TraversolCoreProje.DataAccessLayer.csproj", "{BAA247CB-31F5-41BD-A8AE-3A5FFF34F4D8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraversalCoreProje.CoreLayer", "Core\TraversalCoreProje.CoreLayer\TraversalCoreProje.CoreLayer.csproj", "{2514D1B3-C99B-4DB1-898A-4D2F72516D94}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraversalCoreProje.BusinessLayer", "Business\TraversalCoreProje.BusinessLayer\TraversalCoreProje.BusinessLayer.csproj", "{3C1DF550-B54D-44DC-9470-861C533BF7B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraversalCoreProje.BusinessLayer", "TraversalCoreProje.BusinessLayer\TraversalCoreProje.BusinessLayer.csproj", "{0494C684-29C1-4EA2-BF56-826FCED86CB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,36 +21,33 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FD9DE6AF-9B2F-4D3B-8672-7A282F9429D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD9DE6AF-9B2F-4D3B-8672-7A282F9429D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD9DE6AF-9B2F-4D3B-8672-7A282F9429D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD9DE6AF-9B2F-4D3B-8672-7A282F9429D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97F0D8D7-7E3A-4B9D-BB80-5759E41D4550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97F0D8D7-7E3A-4B9D-BB80-5759E41D4550}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97F0D8D7-7E3A-4B9D-BB80-5759E41D4550}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97F0D8D7-7E3A-4B9D-BB80-5759E41D4550}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BAA247CB-31F5-41BD-A8AE-3A5FFF34F4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BAA247CB-31F5-41BD-A8AE-3A5FFF34F4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BAA247CB-31F5-41BD-A8AE-3A5FFF34F4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BAA247CB-31F5-41BD-A8AE-3A5FFF34F4D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2514D1B3-C99B-4DB1-898A-4D2F72516D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2514D1B3-C99B-4DB1-898A-4D2F72516D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2514D1B3-C99B-4DB1-898A-4D2F72516D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2514D1B3-C99B-4DB1-898A-4D2F72516D94}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C1DF550-B54D-44DC-9470-861C533BF7B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C1DF550-B54D-44DC-9470-861C533BF7B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C1DF550-B54D-44DC-9470-861C533BF7B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C1DF550-B54D-44DC-9470-861C533BF7B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F704FD6F-A725-4CEC-BC2F-5EEB70F93904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F704FD6F-A725-4CEC-BC2F-5EEB70F93904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F704FD6F-A725-4CEC-BC2F-5EEB70F93904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F704FD6F-A725-4CEC-BC2F-5EEB70F93904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391B672F-DC37-415B-829B-2AF911BD79C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391B672F-DC37-415B-829B-2AF911BD79C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391B672F-DC37-415B-829B-2AF911BD79C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391B672F-DC37-415B-829B-2AF911BD79C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD5A8E1A-BC33-457F-B86B-3BA937A70EC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD5A8E1A-BC33-457F-B86B-3BA937A70EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD5A8E1A-BC33-457F-B86B-3BA937A70EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD5A8E1A-BC33-457F-B86B-3BA937A70EC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A80208D-7A50-45D9-9812-4C20D1147B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A80208D-7A50-45D9-9812-4C20D1147B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A80208D-7A50-45D9-9812-4C20D1147B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A80208D-7A50-45D9-9812-4C20D1147B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C50D072-CB9D-4AAB-A351-244BCCCB5A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C50D072-CB9D-4AAB-A351-244BCCCB5A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C50D072-CB9D-4AAB-A351-244BCCCB5A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C50D072-CB9D-4AAB-A351-244BCCCB5A2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0494C684-29C1-4EA2-BF56-826FCED86CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0494C684-29C1-4EA2-BF56-826FCED86CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0494C684-29C1-4EA2-BF56-826FCED86CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0494C684-29C1-4EA2-BF56-826FCED86CB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{FD9DE6AF-9B2F-4D3B-8672-7A282F9429D7} = {468409C5-A402-4365-9E27-2E02899126A1}
-		{97F0D8D7-7E3A-4B9D-BB80-5759E41D4550} = {FF48D21A-93E4-4E28-9ADA-8789AF3A0DB2}
-		{BAA247CB-31F5-41BD-A8AE-3A5FFF34F4D8} = {DCAAF1D3-E746-462F-A05A-F53EB595E2D0}
-		{2514D1B3-C99B-4DB1-898A-4D2F72516D94} = {23B81FC8-FD44-46D2-A91F-B7E1E1840CD0}
-		{3C1DF550-B54D-44DC-9470-861C533BF7B8} = {F68471F6-5B5F-44FD-8EFB-C1AD764D0FFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54703A3C-A049-4193-9799-FD0F93212897}
