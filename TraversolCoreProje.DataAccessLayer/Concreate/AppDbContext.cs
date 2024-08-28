@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using TraversalCoreProje.CoreLayer.Concrete;
 
 namespace TraversolCoreProje.DataAccessLayer.Concreate
@@ -21,5 +22,12 @@ namespace TraversolCoreProje.DataAccessLayer.Concreate
         public DbSet<SubAbout> SubAbouts { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(AppDbContext)));
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
+
 }
