@@ -7,6 +7,7 @@ using System.Reflection;
 using TraversalCoreProje.BusinessLayer.Interfaces;
 using TraversalCoreProje.BusinessLayer.Mappings;
 using TraversalCoreProje.BusinessLayer.Services;
+using TraversalCoreProje.BusinessLayer.Validations;
 using TraversolCoreProje.DataAccessLayer.Concreate;
 using TraversolCoreProje.DataAccessLayer.EfCore.Intercaces;
 using TraversolCoreProje.DataAccessLayer.EfCore.Repositories;
@@ -31,7 +32,7 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
 
             Services.AddFluentValidationAutoValidation();
             Services.AddFluentValidationClientsideAdapters();
-            Services.AddValidatorsFromAssemblyContaining<Mapping>();
+            Services.AddValidatorsFromAssemblyContaining<UpdateAboutValidator>();
 
             Services.AddAutoMapper(Assembly.GetAssembly(typeof(Mapping)));
 
