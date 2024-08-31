@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using TraversalCoreProje.BusinessLayer.Interfaces;
 using TraversalCoreProje.CoreLayer.BaseConcrete;
 using TraversolCoreProje.DataAccessLayer.Interfaces;
 using TraversolCoreProje.Dto.Dtos;
+using TraversolCoreProje.Dto.Dtos.BaseDto;
 
 namespace TraversalCoreProje.BusinessLayer.Services
 {
@@ -16,19 +19,23 @@ namespace TraversalCoreProje.BusinessLayer.Services
             _mapper = mapper;
         }
 
-        public async Task CreateAsync(CreateDto entity)
+        public async Task<ResponseDto<NoContent>> CreateAsync(CreateDto entity)
         {
             await _genericCommandRepository.CreateAsync(_mapper.Map<Entity>(entity));
+            return ResponseDto<NoContent>.Success(StatusCodes.Status201Created);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<ResponseDto<NoContent>> DeleteAsync(int id)
         {
             await _genericCommandRepository.DeleteAsync(id);
+            return ResponseDto<NoContent>.Success(StatusCodes.Status204NoContent);
+
         }
 
-        public async Task UpdateAsync(UpdateDto entity)
+        public async Task<ResponseDto<NoContent>> UpdateAsync(UpdateDto entity)
         {
             await _genericCommandRepository.UpdateAsync(_mapper.Map<Entity>(entity));
+            return ResponseDto<NoContent>.Success(StatusCodes.Status204NoContent);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace TraversolCoreProje.DataAccessLayer.Repository
 
         public async Task<List<T>> GetListAsync()
         {
-            return await _appDbContext.Set<T>().ToListAsync();
+            return await _appDbContext.Set<T>().AsNoTracking().ToListAsync();
         }
 
         

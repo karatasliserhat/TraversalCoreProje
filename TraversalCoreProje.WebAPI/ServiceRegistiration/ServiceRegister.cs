@@ -106,6 +106,8 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
             Services.AddScoped<ITestimonialReadService, TestimonialReadService>();
 
 
+            Services.AddScoped<IStatisticsRepository, StatisticsRepository>();
+            Services.AddScoped<IStatisticsService, StatisticsService>();
         }
     }
 }
