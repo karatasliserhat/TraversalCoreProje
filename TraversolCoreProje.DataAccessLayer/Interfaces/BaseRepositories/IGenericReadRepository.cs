@@ -1,4 +1,5 @@
-﻿using TraversalCoreProje.CoreLayer.BaseConcrete;
+﻿using System.Linq.Expressions;
+using TraversalCoreProje.CoreLayer.BaseConcrete;
 
 namespace TraversolCoreProje.DataAccessLayer.Interfaces
 {
@@ -6,6 +7,6 @@ namespace TraversolCoreProje.DataAccessLayer.Interfaces
     {
         Task<List<T>> GetListAsync();
         Task<T> GetByIdAsync(int id);
-       
+        Task<List<T>> GetListByFilter(Expression<Func<T, bool>> filter);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using TraversalCoreProje.CoreLayer.BaseConcrete;
 using TraversolCoreProje.DataAccessLayer.Concreate;
 using TraversolCoreProje.DataAccessLayer.Interfaces;
@@ -23,6 +24,9 @@ namespace TraversolCoreProje.DataAccessLayer.Repository
             return await _appDbContext.Set<T>().AsNoTracking().ToListAsync();
         }
 
-        
+        public async Task<List<T>> GetListByFilter(Expression<Func<T, bool>> filter)
+        {
+            return await _appDbContext.Set<T>().AsNoTracking().Where(filter).ToListAsync();
+        }
     }
 }

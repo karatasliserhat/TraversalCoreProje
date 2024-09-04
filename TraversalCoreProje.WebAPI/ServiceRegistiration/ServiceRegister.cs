@@ -69,6 +69,10 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
             Services.AddScoped<ITestimonialCommandRepository, TestimonialCommandRepository>();
             Services.AddScoped<ITestimonialReadRepository, TestimonialReadRepository>();
 
+            Services.AddScoped<ICommentCommandRepository, CommentCommandRepository>();
+            Services.AddScoped<ICommentReadRepository, CommentReadRepository>();
+
+
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             Services.AddScoped(typeof(IGenericCommandService<,,>), typeof(GenericCommandService<,,>));
@@ -108,6 +112,10 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
 
             Services.AddScoped<IStatisticsRepository, StatisticsRepository>();
             Services.AddScoped<IStatisticsService, StatisticsService>();
+
+
+            Services.AddScoped<ICommentCommandService, CommentCommandService>();
+            Services.AddScoped<ICommentReadService, CommentReadService>();
         }
     }
 }

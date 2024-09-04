@@ -2,7 +2,7 @@
 
 namespace TraversalCoreProje.CoreLayer.Concrete
 {
-    public class Destination:BaseEntity
+    public class Destination : BaseEntity
     {
         public string City { get; set; }
         public string DayNight { get; set; }
@@ -14,6 +14,8 @@ namespace TraversalCoreProje.CoreLayer.Concrete
         public string Details1 { get; set; }
         public string Details2 { get; set; }
         public string Image2 { get; set; }
+
+        public virtual List<Comment> Comments { get; set; }
 
     }
 }

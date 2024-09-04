@@ -12,7 +12,7 @@ namespace TraversolCoreProje.WebUI.Controllers
         public DestinationController(IDestinationReadApiService destinationReadApiService, IDataProtectionProvider dataProtectionProvider, IUserService userService)
         {
             _destinationReadApiService = destinationReadApiService;
-            _dataProtector = dataProtectionProvider.CreateProtector("DestinarionController");
+            _dataProtector = dataProtectionProvider.CreateProtector("DestinationController");
             _userService = userService;
         }
 
@@ -30,6 +30,7 @@ namespace TraversolCoreProje.WebUI.Controllers
 
         public async Task<IActionResult> DestinationDetail(string dataId)
         {
+            ViewBag.DataId = dataId;
             var id = int.Parse(_dataProtector.Unprotect(dataId));
             var response = await _destinationReadApiService.GetByIdAsync(id, "");
             return View(response.Data);

@@ -10,8 +10,4 @@
     <ProjectReference Include="..\TraversalCoreProje.CoreLayer\TraversalCoreProje.CoreLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configurations\" />
-  </ItemGroup>
-
 </Project>

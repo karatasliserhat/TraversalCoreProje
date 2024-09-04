@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using System.Net;
 using TraversalCoreProje.BusinessLayer.Interfaces;
 using TraversalCoreProje.CoreLayer.BaseConcrete;
 using TraversolCoreProje.DataAccessLayer.Interfaces;
@@ -24,7 +23,7 @@ namespace TraversalCoreProje.BusinessLayer.Services
             var data = _mapper.Map<ResultDto>(await _genericReadRepository.GetByIdAsync(id));
             if (data is not null)
                 return ResponseDto<ResultDto>.Success(data, StatusCodes.Status200OK);
-            return ResponseDto<ResultDto>.Fail("Kayıt Bulunamadı", StatusCodes.Status204NoContent);
+            return ResponseDto<ResultDto>.Fail("Kayıt Bulunamadı", StatusCodes.Status404NotFound);
         }
 
         public async Task<ResponseDto<List<ResultDto>>> GetListAsync()
@@ -32,7 +31,9 @@ namespace TraversalCoreProje.BusinessLayer.Services
             var data = _mapper.Map<List<ResultDto>>(await _genericReadRepository.GetListAsync());
             if (data is { Count: > 0 })
                 return ResponseDto<List<ResultDto>>.Success(data, StatusCodes.Status200OK);
-            return ResponseDto<List<ResultDto>>.Fail("Data Yok", StatusCodes.Status204NoContent);
+            return ResponseDto<List<ResultDto>>.Fail("Data Yok", StatusCodes.Status404NotFound);
         }
+
+       
     }
 }

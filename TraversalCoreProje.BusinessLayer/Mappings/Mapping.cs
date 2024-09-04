@@ -47,6 +47,10 @@ namespace TraversalCoreProje.BusinessLayer.Mappings
             CreateMap<Testimonial, ResultTestimonialDto>().ReverseMap();
             CreateMap<Testimonial, CreateTestimonialDto>().ReverseMap();
             CreateMap<Testimonial, UpdateTestimonialDto>().ReverseMap();
+
+            CreateMap<Comment, ResultCommentDto>().ReverseMap();
+            CreateMap<Comment, CreateCommentDto>().ReverseMap();
+            CreateMap<Comment, UpdateCommentDto>().ReverseMap();
         }
     }
 }

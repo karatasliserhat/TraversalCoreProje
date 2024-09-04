@@ -123,6 +123,15 @@ namespace TraversolCoreProje.WebUI.Extensions
             {
                 opt.BaseAddress = new Uri(apiurl.GuideControllerBaseUrl.ToString());
             });
+
+            Services.AddHttpClient<ICommentCommandApiService, CommentCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.CommentsControllerBaseUrl.ToString());
+            });
+            Services.AddHttpClient<ICommentReadApiService, CommentReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.CommentsControllerBaseUrl.ToString());
+            });
         }
     }
 }
