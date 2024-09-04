@@ -30,8 +30,9 @@ namespace TraversolCoreProje.WebUI.Controllers
 
         public async Task<IActionResult> DestinationDetail(string dataId)
         {
-            ViewBag.DataId = dataId;
+         
             var id = int.Parse(_dataProtector.Unprotect(dataId));
+            ViewBag.DataId = id;
             var response = await _destinationReadApiService.GetByIdAsync(id, "");
             return View(response.Data);
 

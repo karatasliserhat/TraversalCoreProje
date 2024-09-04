@@ -1,0 +1,29 @@
+﻿@model CreateCommentViewModel
+<div class="leave-comment-form mt-5" id="reply">
+    <h4 class="side-title mb-2">Bir Yorum Bırakın</h4>
+    <p class="mb-4">
+        Şaretli alanları doldurmanız gerekmektedir. *
+    </p>
+    <form asp-action="AddComment" asp-controller="Comment" method="post">
+
+        <div class="form-group" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <textarea asp-for="@Model.Content" class="form-control" placeholder="Yorumunuz" required=""
+                      spellcheck="false"></textarea>
+        </div>
+        <div class="input-grids row">
+
+            <div class="form-group col-lg-6">
+                <input type="text" asp-for="@Model.User" class="form-control" placeholder="Adınız Soyadınız"
+                       required="">
+            </div>
+            <div class="form-group col-lg-6">
+                <input type="text" readonly asp-for="@Model.DestinationId" value="@Model.DestinationId" class="form-control" required="">
+            </div>
+        </div>
+
+        <div class="submit text-right">
+            <button class="btn btn-style btn-primary">Yorum Gönder </button>
+        </div>
+    </form>
+</div>

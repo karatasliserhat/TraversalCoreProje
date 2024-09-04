@@ -21,7 +21,7 @@ namespace TraversalCoreProje.BusinessLayer.Services
 
         public async Task<ResponseDto<List<ResultCommentDto>>> GetListByDestinationIdAsync(int id)
         {
-            var result = _mapper.Map<List<ResultCommentDto>>(await _commentReadRepository.GetListByFilter(x => x.Id == id));
+            var result = _mapper.Map<List<ResultCommentDto>>(await _commentReadRepository.GetListByFilter(x => x.DestinationId == id));
             if (result is { Count: > 0 })
                 return ResponseDto<List<ResultCommentDto>>.Success(result, StatusCodes.Status200OK);
             return ResponseDto<List<ResultCommentDto>>.Fail("Data Yok", StatusCodes.Status404NotFound);
