@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TraversalCoreProje.ViewModels\TraversalCoreProje.ViewModels.csproj" />
+    <ProjectReference Include="..\TraversolCoreProje.Dto\TraversolCoreProje.Dto.csproj" />
   </ItemGroup>
 
 </Project>

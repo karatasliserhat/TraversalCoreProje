@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TraversalCoreProje.CoreLayer.Concrete;
 using TraversolCoreProje.Dto.Dtos;
+using TraversolCoreProje.Dto.Dtos.UserDto;
 
 namespace TraversalCoreProje.BusinessLayer.Mappings
 {
@@ -8,6 +9,8 @@ namespace TraversalCoreProje.BusinessLayer.Mappings
     {
         public Mapping()
         {
+            CreateMap<AppUser, CreateUserDto>().ReverseMap();
+
             CreateMap<About, ResultAboutDto>().ReverseMap();
             CreateMap<About, CreateAboutDto>().ReverseMap();
             CreateMap<About, UpdateAboutDto>().ReverseMap();

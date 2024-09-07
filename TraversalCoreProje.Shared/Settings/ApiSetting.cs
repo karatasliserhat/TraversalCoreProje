@@ -16,5 +16,7 @@ namespace TraversalCoreProje.Shared.Services
         public string TestimonialControllerBaseUrl { get  ; set  ; }
         public string StatisticsControllerBaseUrl { get  ; set  ; }
         public string CommentsControllerBaseUrl { get  ; set  ; }
+        public string AccountControllerBaseUrl { get  ; set  ; }
+        public string UserControllerBaseUrl { get  ; set  ; }
     }
 }

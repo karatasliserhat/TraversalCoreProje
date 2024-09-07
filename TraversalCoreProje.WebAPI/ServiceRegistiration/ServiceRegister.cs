@@ -1,13 +1,21 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Reflection;
+using System.Text;
 using TraversalCoreProje.BusinessLayer.Interfaces;
+using TraversalCoreProje.BusinessLayer.Interfaces.IUserServices;
 using TraversalCoreProje.BusinessLayer.Mappings;
 using TraversalCoreProje.BusinessLayer.Services;
-using TraversalCoreProje.BusinessLayer.Validations;
+using TraversalCoreProje.BusinessLayer.Tools;
+using TraversalCoreProje.ValidationLayer.Validations;
+using TraversalCoreProje.CoreLayer.Concrete;
 using TraversolCoreProje.DataAccessLayer.Concreate;
 using TraversolCoreProje.DataAccessLayer.EfCore.Intercaces;
 using TraversolCoreProje.DataAccessLayer.EfCore.Repositories;
@@ -27,8 +35,47 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
             Services.AddDbContext<AppDbContext>(opt =>
             {
                 opt.UseSqlServer(configuration.GetConnectionString("SqlConnection"));
+            }
+            ).AddIdentity<AppUser, AppRole>()
+            .AddErrorDescriber<CustomIdentityErrorDescriber>()
+            .AddEntityFrameworkStores<AppDbContext>();
+
+
+            var scope = Services.BuildServiceProvider();
+
+            var jwtModel = scope.GetRequiredService<IOptions<JwtTokenModel>>().Value;
+
+            Services.Configure<JwtTokenModel>(configuration.GetSection(nameof(JwtTokenModel)));
+
+            Services.AddScoped<IJwtTokenModel>(sp =>
+            {
+                return sp.GetRequiredService<IOptions<JwtTokenModel>>().Value;
             });
 
+            Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opts =>
+            {
+
+                opts.RequireHttpsMetadata = false;
+                opts.TokenValidationParameters = new TokenValidationParameters
+                {
+
+                    ValidAudience = jwtModel.Audience,
+                    ValidIssuer = jwtModel.Issuer,
+                    ClockSkew = TimeSpan.Zero,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtModel.Key)),
+                    ValidateIssuer = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true
+                };
+            });
+
+
+
+            Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
+            Services.AddScoped<IUserService, UserService>();
+            Services.AddScoped<IAccountService, AccountService>();
 
             Services.AddFluentValidationAutoValidation();
             Services.AddFluentValidationClientsideAdapters();

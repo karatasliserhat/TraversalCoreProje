@@ -16,7 +16,7 @@ namespace TraversolCoreProje.WebUI.ViewComponents.DestinationDetailComponent
         public async Task<IViewComponentResult> InvokeAsync(int DataId)
         {
       
-            var result = await _commentReadApiService.GetCommentListByDestinationId(DataId, string.Empty);
+            var result = await _commentReadApiService.GetCommentListByDestinationId(DataId, _userService.AccessToken);
             return View(result.Data);
         }
 

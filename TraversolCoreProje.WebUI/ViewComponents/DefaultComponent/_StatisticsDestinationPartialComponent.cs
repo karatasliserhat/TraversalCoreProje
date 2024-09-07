@@ -15,13 +15,13 @@ namespace TraversolCoreProje.WebUI.ViewComponents.DefaultComponent
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var destinationCount = await _statisticsApiService.DestinationCount("");
+            var destinationCount = await _statisticsApiService.DestinationCount(_userService.AccessToken);
             ViewBag.DestinationCount = destinationCount.Data;
 
-            var guideCount = await _statisticsApiService.GuideCount("");
+            var guideCount = await _statisticsApiService.GuideCount(_userService.AccessToken);
             ViewBag.GuideCount = guideCount.Data;
 
-            var testimonialCount = await _statisticsApiService.TestimonailCount("");
+            var testimonialCount = await _statisticsApiService.TestimonailCount(_userService.AccessToken);
             ViewBag.TestimonailCount = testimonialCount.Data;
             return View();
         }

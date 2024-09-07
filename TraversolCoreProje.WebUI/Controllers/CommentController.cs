@@ -19,19 +19,24 @@ namespace TraversolCoreProje.WebUI.Controllers
         [HttpGet]
         public PartialViewResult AddComment()
         {
-            return PartialView();
+            return PartialView(new CreateCommentViewModel());
         }
         [HttpPost]
         public async Task<IActionResult> AddComment(CreateCommentViewModel createCommentViewModel)
         {
             if (!ModelState.IsValid)
-                return View();
+                return RedirectToAction(nameof(DestinationController.DestinationDetail), "Destination", new { dataId = _dataProtector.Protect(createCommentViewModel.DestinationId.ToString()) });
             createCommentViewModel.Status = true;
             createCommentViewModel.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             var result = await _commentCommandApiService.CreateAsync(createCommentViewModel, "");
             if (result.StatusCode == StatusCodes.Status201Created)
                 return RedirectToAction(nameof(DestinationController.DestinationDetail), "Destination", new { dataId = _dataProtector.Protect(createCommentViewModel.DestinationId.ToString()) });
-            ModelState.AddModelError("", result.Error);
+
+            foreach (var item in result.Errors)
+            {
+                ModelState.AddModelError("", item);
+            }
+
             return RedirectToAction(nameof(DestinationController.DestinationDetail), "Destination", new { dataId = _dataProtector.Protect(createCommentViewModel.DestinationId.ToString()) });
         }
     }

@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using TraversalCoreProje.CoreLayer.Concrete;
 
 namespace TraversolCoreProje.DataAccessLayer.Concreate
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser,AppRole,int>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

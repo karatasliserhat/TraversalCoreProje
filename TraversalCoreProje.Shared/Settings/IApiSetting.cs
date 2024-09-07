@@ -14,6 +14,7 @@
         string TestimonialControllerBaseUrl { get; set; }
         string StatisticsControllerBaseUrl { get; set; }
         string CommentsControllerBaseUrl { get; set; }
-
+        public string AccountControllerBaseUrl { get; set; }
+        public string UserControllerBaseUrl { get; set; }
     }
 }

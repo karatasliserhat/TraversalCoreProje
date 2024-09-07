@@ -1,4 +1,10 @@
-﻿using Microsoft.Extensions.Options;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Options;
+using TraversalCoreProje.ValidationLayer.Validations;
 using TraversalCoreProje.Shared.Interfaces;
 using TraversalCoreProje.Shared.Services;
 using TraversalCoreProje.Shared.Services.UserServices;
@@ -9,6 +15,31 @@ namespace TraversolCoreProje.WebUI.Extensions
     {
         public static void AddService(this IServiceCollection Services, IConfiguration Configuration)
         {
+
+            Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, conf =>
+            {
+                conf.LoginPath = new PathString("/Login/SignIn");
+                conf.LogoutPath = new PathString("/Login/SignOut");
+                conf.AccessDeniedPath = new PathString("/Login/AccessDenied");
+                conf.Cookie = new CookieBuilder
+                {
+                    SameSite = SameSiteMode.Strict,
+                    HttpOnly = true,
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest,
+                    Name = "TraversalCoreProject"
+                };
+            });
+
+            Services.AddMvc(conf =>
+            {
+
+                var policy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+
+                conf.Filters.Add(new AuthorizeFilter(policy));
+            });
+
             Services.AddHttpContextAccessor();
 
             Services.Configure<ApiSetting>(Configuration.GetSection("ApiSetting"));
@@ -21,6 +52,10 @@ namespace TraversolCoreProje.WebUI.Extensions
             var scope = Services.BuildServiceProvider();
             var apiurl = scope.GetRequiredService<IOptions<ApiSetting>>().Value;
 
+
+            Services.AddFluentValidationAutoValidation();
+            Services.AddFluentValidationClientsideAdapters();
+            Services.AddValidatorsFromAssemblyContaining<CreateUserViewModelValidation>();
 
             Services.AddScoped<IUserService, UserService>();
 
@@ -131,6 +166,15 @@ namespace TraversolCoreProje.WebUI.Extensions
             Services.AddHttpClient<ICommentReadApiService, CommentReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiurl.CommentsControllerBaseUrl.ToString());
+            });
+
+            Services.AddHttpClient<IAccountApiService, AccountApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.AccountControllerBaseUrl.ToString());
+            });
+            Services.AddHttpClient<IUserApiService, UserApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.UserControllerBaseUrl.ToString());
             });
         }
     }

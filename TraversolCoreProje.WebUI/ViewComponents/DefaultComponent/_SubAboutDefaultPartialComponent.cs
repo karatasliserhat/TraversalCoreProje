@@ -16,10 +16,14 @@ namespace TraversolCoreProje.WebUI.ViewComponents.DefaultComponent
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var values = await _subAboutReadApiServices.GetAllAsync("");
+            var values = await _subAboutReadApiServices.GetAllAsync(_userService.AccessToken);
             if (values.Data is { Count: < 1 })
-                return View(values.Error);
-            ViewBag.Error = values.Error;
+            {
+                ViewBag.Error = values.Errors.FirstOrDefault();
+                return View(values.Errors.FirstOrDefault());
+
+            }
+
             return View(values.Data);
         }
     }

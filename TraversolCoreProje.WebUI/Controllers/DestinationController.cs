@@ -18,10 +18,10 @@ namespace TraversolCoreProje.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var response = await _destinationReadApiService.GetAllAsync("");
+            var response = await _destinationReadApiService.GetAllAsync(_userService.AccessToken);
             if (response.Data is null)
             {
-                ViewBag.Error = response.Error;
+                ViewBag.Error = response.Errors.FirstOrDefault();
                 return null;
             }
             response.Data.ForEach(x => x.DataProtect = _dataProtector.Protect(x.Id.ToString()));
@@ -33,7 +33,7 @@ namespace TraversolCoreProje.WebUI.Controllers
          
             var id = int.Parse(_dataProtector.Unprotect(dataId));
             ViewBag.DataId = id;
-            var response = await _destinationReadApiService.GetByIdAsync(id, "");
+            var response = await _destinationReadApiService.GetByIdAsync(id, _userService.AccessToken);
             return View(response.Data);
 
         }
