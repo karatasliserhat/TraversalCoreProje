@@ -137,12 +137,18 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TraversalCoreProje.Shared\TraversalCoreProje.Shared.csproj" />
     <ProjectReference Include="..\TraversalCoreProje.ValidationLayer\TraversalCoreProje.ValidationLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Member\Data\" />
+    <Folder Include="Areas\Member\Models\" />
+    <Folder Include="wwwroot\userimage\" />
   </ItemGroup>
 
 </Project>

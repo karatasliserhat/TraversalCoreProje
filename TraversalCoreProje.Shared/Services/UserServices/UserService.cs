@@ -16,6 +16,7 @@ namespace TraversalCoreProje.Shared.Services.UserServices
 
         public string GetUser => _context.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
 
+        public string Role => _context.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value;
         public string AccessToken => _context.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
 
         public void TokenHeaderAuthorization(HttpClient httpClient, string Token)

@@ -5,11 +5,13 @@ using TraversolCoreProje.Dto.Dtos.UserDto;
 
 namespace TraversalCoreProje.BusinessLayer.Mappings
 {
-    public class Mapping:Profile
+    public class Mapping : Profile
     {
         public Mapping()
         {
             CreateMap<AppUser, CreateUserDto>().ReverseMap();
+            CreateMap<AppUser, UserEditDto>().ReverseMap();
+            CreateMap<AppUser, ResultUserDto>().ReverseMap();
 
             CreateMap<About, ResultAboutDto>().ReverseMap();
             CreateMap<About, CreateAboutDto>().ReverseMap();

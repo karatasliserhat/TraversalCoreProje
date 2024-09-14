@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "View";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Html.PartialAsync("/Views/Shared/MemberLayoutPartial/_MemberHeadPartial.cshtml")
+
+@RenderSection("Styles", required: false)
+
+<body class="g-sidenav-show  bg-gray-100">
+    @await Html.PartialAsync("/Views/Shared/MemberLayoutPartial/_MemberSidebarPartial.cshtml")
+
+    <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+        <!-- Navbar -->
+        @await Html.PartialAsync("/Views/Shared/MemberLayoutPartial/_MemberNavbarPartial.cshtml")
+
+        <!-- End Navbar -->
+        @RenderBody()
+
+        @await Html.PartialAsync("/Views/Shared/MemberLayoutPartial/_MemberFooterPartial.cshtml")
+
+    </main>
+    @await Html.PartialAsync("/Views/Shared/MemberLayoutPartial/_MemberPluginPartial.cshtml")
+
+    @await Html.PartialAsync("/Views/Shared/MemberLayoutPartial/_MemberScriptPartial.cshtml")
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+
+</html>
+

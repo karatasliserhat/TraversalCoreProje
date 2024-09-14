@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TraversalCoreProje.BusinessLayer.Interfaces.IUserServices;
+using TraversolCoreProje.Dto.Dtos;
 using TraversolCoreProje.Dto.Dtos.UserDto;
 
 namespace TraversalCoreProje.WebAPI.Controllers
@@ -20,6 +21,16 @@ namespace TraversalCoreProje.WebAPI.Controllers
         {
 
             return CreateAction(await _userService.CreateUserAsync(createUserDto));
+        }
+        [HttpPut]
+        public async Task<IActionResult> UserEdit(UserEditDto userEditDto)
+        {
+            return CreateAction(await _userService.UserEditAsync(userEditDto));
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            return CreateAction(await _userService.GetUserAsync(id));
         }
     }
 }

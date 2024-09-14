@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using TraversalCoreProje.BusinessLayer.Interfaces.IUserServices;
 using TraversalCoreProje.CoreLayer.Concrete;
+using TraversolCoreProje.Dto.Dtos;
 using TraversolCoreProje.Dto.Dtos.BaseDto;
 using TraversolCoreProje.Dto.Dtos.UserDto;
 
@@ -12,11 +14,12 @@ namespace TraversalCoreProje.BusinessLayer.Services
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
-
-        public UserService(UserManager<AppUser> userManager, IMapper mapper)
+        private readonly SignInManager<AppUser> _signInManager;
+        public UserService(UserManager<AppUser> userManager, IMapper mapper, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
             _mapper = mapper;
+            _signInManager = signInManager;
         }
 
         public async Task<ResponseDto<CreateUserDto>> CreateUserAsync(CreateUserDto createUserDto)
@@ -34,6 +37,47 @@ namespace TraversalCoreProje.BusinessLayer.Services
             }
             return ResponseDto<CreateUserDto>.Fail(errors, StatusCodes.Status400BadRequest);
 
+        }
+
+        public async Task<ResponseDto<ResultUserDto>> GetUserAsync(int userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user is null)
+                return ResponseDto<ResultUserDto>.Fail("Kullanıcı Bulunamadı", StatusCodes.Status404NotFound);
+
+            return ResponseDto<ResultUserDto>.Success(_mapper.Map<ResultUserDto>(user), StatusCodes.Status200OK);
+        }
+
+        public async Task<ResponseDto<NoContent>> UserEditAsync(UserEditDto userEditDto)
+        {
+            AppUser user = await _userManager.FindByIdAsync(userEditDto.Id.ToString());
+            if (user is null)
+                return ResponseDto<NoContent>.Fail("Kullanıcı Bulunamadı", StatusCodes.Status404NotFound);
+            if (userEditDto.Password is not null)
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, userEditDto.Password);
+            
+            if (userEditDto.ImageUrl is not null)
+                user.ImageUrl = userEditDto.ImageUrl;
+            
+            if (userEditDto.Gender is not null)
+                user.Gender = userEditDto.Gender;
+            user.Name = userEditDto.Name;
+            user.Email = userEditDto.Email;
+            user.Surname = userEditDto.Surname;
+            var response = await _userManager.UpdateAsync(user);
+            if (response.Succeeded)
+            {
+                await _userManager.UpdateSecurityStampAsync(user);
+                await _signInManager.SignOutAsync();
+                await _signInManager.SignInAsync(user, true);
+                return ResponseDto<NoContent>.Success(StatusCodes.Status200OK);
+            }
+            var errors = new List<string>();
+            foreach (var error in response.Errors)
+            {
+                errors.Add(error.Description);
+            }
+            return ResponseDto<NoContent>.Fail(errors, StatusCodes.Status400BadRequest);
         }
     }
 }
