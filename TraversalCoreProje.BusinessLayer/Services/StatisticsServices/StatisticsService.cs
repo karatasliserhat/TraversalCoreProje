@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using TraversalCoreProje.BusinessLayer.Interfaces;
-using TraversolCoreProje.DataAccessLayer.EfCore.Intercaces;
+using TraversolCoreProje.DataAccessLayer.EfCore.Interfaces;
 using TraversolCoreProje.Dto.Dtos;
 using TraversolCoreProje.Dto.Dtos.BaseDto;
 

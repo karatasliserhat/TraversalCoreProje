@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using TraversalCoreProje.BusinessLayer.Interfaces;
 using TraversalCoreProje.CoreLayer.Concrete;
-using TraversolCoreProje.DataAccessLayer.EfCore.Intercaces;
 using TraversolCoreProje.DataAccessLayer.Interfaces;
 using TraversolCoreProje.Dto.Dtos;
 using TraversolCoreProje.Dto.Dtos.BaseDto;
@@ -11,9 +10,9 @@ namespace TraversalCoreProje.BusinessLayer.Services
 {
     public class CommentReadService : GenericReadService<ResultCommentDto, Comment>, ICommentReadService
     {
-        private readonly ICommentReadRepository _commentReadRepository;
+        private readonly IGenericReadRepository<Comment> _commentReadRepository;
         private readonly IMapper _mapper;
-        public CommentReadService(IGenericReadRepository<Comment> genericReadRepository, IMapper mapper, ICommentReadRepository commentReadRepository) : base(genericReadRepository, mapper)
+        public CommentReadService(IGenericReadRepository<Comment> genericReadRepository, IMapper mapper, IGenericReadRepository<Comment> commentReadRepository) : base(genericReadRepository, mapper)
         {
             _commentReadRepository = commentReadRepository;
             _mapper = mapper;

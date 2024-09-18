@@ -16,5 +16,6 @@
         string CommentsControllerBaseUrl { get; set; }
         public string AccountControllerBaseUrl { get; set; }
         public string UserControllerBaseUrl { get; set; }
+        public string ReserVationControllerBaseUrl { get; set; }
     }
 }

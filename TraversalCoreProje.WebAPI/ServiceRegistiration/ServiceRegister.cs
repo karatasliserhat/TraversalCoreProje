@@ -14,10 +14,10 @@ using TraversalCoreProje.BusinessLayer.Interfaces.IUserServices;
 using TraversalCoreProje.BusinessLayer.Mappings;
 using TraversalCoreProje.BusinessLayer.Services;
 using TraversalCoreProje.BusinessLayer.Tools;
-using TraversalCoreProje.ValidationLayer.Validations;
 using TraversalCoreProje.CoreLayer.Concrete;
+using TraversalCoreProje.ValidationLayer.Validations;
 using TraversolCoreProje.DataAccessLayer.Concreate;
-using TraversolCoreProje.DataAccessLayer.EfCore.Intercaces;
+using TraversolCoreProje.DataAccessLayer.EfCore.Interfaces;
 using TraversolCoreProje.DataAccessLayer.EfCore.Repositories;
 using TraversolCoreProje.DataAccessLayer.Interfaces;
 using TraversolCoreProje.DataAccessLayer.Repository;
@@ -86,39 +86,7 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
             Services.AddScoped(typeof(IGenericCommandRepository<>), typeof(GenericCommandRepository<>));
             Services.AddScoped(typeof(IGenericReadRepository<>), typeof(GenericReadRepository<>));
 
-            Services.AddScoped<IAboutCommandRepository, AboutCommandRepository>();
-            Services.AddScoped<IAboutReadRepository, AboutReadRepository>();
-
-            Services.AddScoped<IAbout2ReadRepository, About2ReadRepository>();
-            Services.AddScoped<IAbout2CommandRepository, About2CommandRepository>();
-
-            Services.AddScoped<IContactCommandRepository, ContactCommandRepository>();
-            Services.AddScoped<IContactReadRepository, ContactReadRepository>();
-
-            Services.AddScoped<IDestinationCommandRepository, DestinationCommandRepository>();
-            Services.AddScoped<IDestinationReadRepository, DestinationReadRepository>();
-
-            Services.AddScoped<IFeature2CommandRepository, Feature2CommandRepository>();
-            Services.AddScoped<IFeature2ReadRepository, Feature2ReadRepository>();
-
-            Services.AddScoped<IFeatureCommandRepository, FeatureCommandRepository>();
-            Services.AddScoped<IFeatureReadRepository, FeatureReadRepository>();
-
-            Services.AddScoped<IGuideCommandRepository, GuideCommandRepository>();
-            Services.AddScoped<IGuideReadRepository, GuideReadRepository>();
-
-            Services.AddScoped<INewsLetterCommandRepository, NewsLetterCommandRepository>();
-            Services.AddScoped<INewsLetterReadRepository, NewsLetterReadRepository>();
-
-            Services.AddScoped<ISubAboutCommandRepository, SubAboutCommandRepository>();
-            Services.AddScoped<ISubAboutReadRepository, SubAboutReadRepository>();
-
-            Services.AddScoped<ITestimonialCommandRepository, TestimonialCommandRepository>();
-            Services.AddScoped<ITestimonialReadRepository, TestimonialReadRepository>();
-
-            Services.AddScoped<ICommentCommandRepository, CommentCommandRepository>();
-            Services.AddScoped<ICommentReadRepository, CommentReadRepository>();
-
+            Services.AddScoped<IReservationReadRepository, ReservationReadRepository>();
 
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -157,9 +125,11 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
             Services.AddScoped<ITestimonialReadService, TestimonialReadService>();
 
 
-            Services.AddScoped<IStatisticsRepository, StatisticsRepository>();
-            Services.AddScoped<IStatisticsService, StatisticsService>();
+            Services.AddScoped<IReservationCommandService, ReservationCommandService>();
+            Services.AddScoped<IReservationReadService, ReservationReadService>();
 
+            Services.AddScoped<IStatisticsService, StatisticsService>();
+            Services.AddScoped<IStatisticsRepository, StatisticsRepository>();
 
             Services.AddScoped<ICommentCommandService, CommentCommandService>();
             Services.AddScoped<ICommentReadService, CommentReadService>();

@@ -16,6 +16,7 @@ namespace TraversalCoreProje.CoreLayer.Concrete
         public string Image2 { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
+        public virtual List<Reservation> Reservations { get; set; }
 
     }
 }

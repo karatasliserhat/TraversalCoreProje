@@ -56,6 +56,14 @@ namespace TraversalCoreProje.BusinessLayer.Mappings
             CreateMap<Comment, ResultCommentDto>().ReverseMap();
             CreateMap<Comment, CreateCommentDto>().ReverseMap();
             CreateMap<Comment, UpdateCommentDto>().ReverseMap();
+
+            CreateMap<Reservation, ResultReservationDto>()
+                .ForMember(x => x
+                .DestinationCityName, member => member.MapFrom(x => x
+                .Destination.City))
+                .ReverseMap();
+            CreateMap<Reservation, CreateReservationDto>().ReverseMap();
+            CreateMap<Reservation, UpdateReservationDto>().ReverseMap();
         }
     }
 }

@@ -168,6 +168,15 @@ namespace TraversolCoreProje.WebUI.Extensions
                 opt.BaseAddress = new Uri(apiurl.CommentsControllerBaseUrl.ToString());
             });
 
+            Services.AddHttpClient<IReservationCommandApiService, ReservationCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.ReserVationControllerBaseUrl.ToString());
+            });
+            Services.AddHttpClient<IReservationReadApiService, ReservationReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.ReserVationControllerBaseUrl.ToString());
+            });
+
             Services.AddHttpClient<IAccountApiService, AccountApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiurl.AccountControllerBaseUrl.ToString());

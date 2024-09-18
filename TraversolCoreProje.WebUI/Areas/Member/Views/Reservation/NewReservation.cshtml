@@ -1,0 +1,44 @@
+﻿@model CreateReservationViewModel
+@{
+    ViewData["Title"] = "NewReservation";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h5>Yeni Rezervasyon</h5>
+                </div>
+                <form asp-action="NewReservation" method="post">
+                    <div class="form-control">
+                        <label>Rota Seçin</label>
+                        <select class="form-select" asp-for="@Model.DestinationId" asp-items="@ViewBag.DestinationCity">
+                        </select>
+                        <span class="text-danger" asp-validation-for="@Model.DestinationId"></span>
+                    </div>
+                    <div class="form-control">
+                        <label>Kişi Sayısı Giriniz</label>
+                        <input type="text" asp-for="@Model.PersonCount" class="form-control" />
+                        <span class="text-danger" asp-validation-for="@Model.PersonCount"></span>
+                    </div>
+                    <div class="form-control">
+                        <label>Tarih Seçin</label>
+                        <input type="date" asp-for="@Model.Date" value="@DateTime.Now" class="form-control" />
+                        <span class="text-danger" asp-validation-for="@Model.Date"></span>
+                    </div>
+                    <div class="form-control mb-2">
+                        <label>Notunuz varsa giriniz</label>
+                        <textarea class="form-control" cols="5" rows="5" asp-for="@Model.Description"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.Description"></span>
+                    </div>
+
+                    <input type="submit" class="btn btn-info" value="Oluştur" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TraversolCoreProje.DataAccessLayer.Concreate;
 
@@ -11,9 +12,11 @@ using TraversolCoreProje.DataAccessLayer.Concreate;
 namespace TraversolCoreProje.DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240917134538_mig_Update_ReservationTable_DeleteColumnDestionation")]
+    partial class mig_Update_ReservationTable_DeleteColumnDestionation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -518,9 +521,6 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DestinationId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PersonCount")
                         .HasColumnType("nvarchar(max)");
 
@@ -533,8 +533,6 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
-
-                    b.HasIndex("DestinationId");
 
                     b.ToTable("Reservations");
                 });
@@ -656,15 +654,7 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TraversalCoreProje.CoreLayer.Concrete.Destination", "Destination")
-                        .WithMany("Reservations")
-                        .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("AppUser");
-
-                    b.Navigation("Destination");
                 });
 
             modelBuilder.Entity("TraversalCoreProje.CoreLayer.Concrete.AppUser", b =>
@@ -675,8 +665,6 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
             modelBuilder.Entity("TraversalCoreProje.CoreLayer.Concrete.Destination", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }
