@@ -10,7 +10,9 @@ namespace TraversalCoreProje.WebAPI.Controllers
         [NonAction]
         public IActionResult CreateAction<T>(ResponseDto<T> response)
         {
-            if (response.StatusCode == 204) return new ObjectResult(null) { StatusCode = response.StatusCode };
+            //No Content İçeriği değişebilir if yapısı kuruldu objectResult(null) 'Null Olarabilir' 
+    
+            if (response.StatusCode == 204) return new ObjectResult(response) { StatusCode = response.StatusCode };
 
             return new ObjectResult(response) { StatusCode = response.StatusCode };
         }

@@ -21,6 +21,7 @@ namespace TraversalCoreProje.BusinessLayer.Services
 
         public async Task<ResponseDto<NoContent>> CreateAsync(CreateDto entity)
         {
+            entity.Status=true;
             await _genericCommandRepository.CreateAsync(_mapper.Map<Entity>(entity));
             return ResponseDto<NoContent>.Success(StatusCodes.Status201Created);
         }
@@ -28,7 +29,7 @@ namespace TraversalCoreProje.BusinessLayer.Services
         public async Task<ResponseDto<NoContent>> DeleteAsync(int id)
         {
             await _genericCommandRepository.DeleteAsync(id);
-            return ResponseDto<NoContent>.Success(StatusCodes.Status204NoContent);
+            return ResponseDto<NoContent>.Success(StatusCodes.Status201Created);
 
         }
 

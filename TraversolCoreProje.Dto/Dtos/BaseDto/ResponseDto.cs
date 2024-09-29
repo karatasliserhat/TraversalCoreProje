@@ -2,7 +2,7 @@
 
 namespace TraversolCoreProje.Dto.Dtos.BaseDto
 {
-    public record ResponseDto<T>
+    public class ResponseDto<T>
     {
         public T Data { get; set; }
         public List<string> Errors { get; set; }

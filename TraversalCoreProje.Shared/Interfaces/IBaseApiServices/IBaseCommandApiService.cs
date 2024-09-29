@@ -13,5 +13,8 @@ namespace TraversalCoreProje.Shared.Interfaces
 
         Task<ResponseViewModel<NoContent>> DeleteAsync(string ActionName, int id, string token);
         Task<ResponseViewModel<NoContent>> DeleteAsync(int id, string token);
+        Task<ResponseViewModel<UpdateViewModel>> UpdateGetByIdAsync(string ActionName, int id, string token);
+        Task<ResponseViewModel<UpdateViewModel>> UpdateGetByIdAsync(int id, string token);
+
     }
 }

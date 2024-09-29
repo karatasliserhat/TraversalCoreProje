@@ -10,5 +10,6 @@ namespace TraversalCoreProje.Shared.Interfaces
 
         Task<ResponseViewModel<ResultViewModel>> GetByIdAsync(string ActionName, int id, string token);
         Task<ResponseViewModel<ResultViewModel>> GetByIdAsync(int id, string token);
+
     }
 }

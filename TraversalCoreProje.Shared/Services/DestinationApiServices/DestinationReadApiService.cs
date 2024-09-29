@@ -1,4 +1,5 @@
-﻿using TraversalCoreProje.Shared.Interfaces;
+﻿using System.Security.Cryptography.X509Certificates;
+using TraversalCoreProje.Shared.Interfaces;
 using TraversalCoreProje.ViewModels;
 
 namespace TraversalCoreProje.Shared.Services
@@ -7,6 +8,7 @@ namespace TraversalCoreProje.Shared.Services
     {
         public DestinationReadApiService(HttpClient httpClient, IUserService userService) : base(httpClient, userService)
         {
+           
         }
     }
 }
