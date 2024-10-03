@@ -3,172 +3,172 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<div class="col-xl">
-    <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Rota Ekleme</h5>
-            <small class="text-muted float-end">Rota Ekleme</small>
-        </div>
-        <div class="card-body">
-            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-            <form asp-action="Create"  asp-controller="AdminDestination" method="post">
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-fullname">Şehir</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-fullname2" class="input-group-text">
-                            <i class="bx bxs-city"></i>
-                        </span>
-                        <input type="text"
-                               class="form-control"
-                               id="basic-icon-default-fullname"
-                               aria-label="John Doe"
-                               aria-describedby="basic-icon-default-fullname2"
-                               asp-for="@Model.City" />
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Rota Ekleme</h5>
+                <small class="text-muted float-end">Rota Ekleme</small>
+            </div>
+            <div class="card-body">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form asp-action="Create" asp-controller="AdminDestination" method="post">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-fullname">Şehir</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                                <i class="bx bxs-city"></i>
+                            </span>
+                            <input type="text"
+                                   class="form-control"
+                                   id="basic-icon-default-fullname"
+                                   aria-label="John Doe"
+                                   aria-describedby="basic-icon-default-fullname2"
+                                   asp-for="@Model.City" />
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.City"></span>
                     </div>
-                    <span class="text-danger" asp-validation-for="@Model.City"></span>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-company">Gün Gece</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-company2" class="input-group-text">
-                            <i class="bx bx-capsule"></i>
-                        </span>
-                        <input type="text"
-                               id="basic-icon-default-company"
-                               class="form-control"
-                               aria-label="ACME Inc."
-                               aria-describedby="basic-icon-default-company2"
-                               asp-for="@Model.DayNight" />
-                    </div>
-                    <span class="text-danger" asp-validation-for="@Model.DayNight"></span>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Gün Gece</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class="bx bx-capsule"></i>
+                            </span>
+                            <input type="text"
+                                   id="basic-icon-default-company"
+                                   class="form-control"
+                                   aria-label="ACME Inc."
+                                   aria-describedby="basic-icon-default-company2"
+                                   asp-for="@Model.DayNight" />
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.DayNight"></span>
 
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-company">Fiyat</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-company2" class="input-group-text">
-                            <i class="bx bx-money"></i>
-                        </span>
-                        <input type="text"
-                               id="basic-icon-default-company"
-                               class="form-control"
-                               aria-label="ACME Inc."
-                               aria-describedby="basic-icon-default-company2"
-                               asp-for="@Model.Price" />
                     </div>
-                    <span class="text-danger" asp-validation-for="@Model.Price"></span>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Fiyat</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class="bx bx-money"></i>
+                            </span>
+                            <input type="text"
+                                   id="basic-icon-default-company"
+                                   class="form-control"
+                                   aria-label="ACME Inc."
+                                   aria-describedby="basic-icon-default-company2"
+                                   asp-for="@Model.Price" />
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Price"></span>
 
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-company">Ana Görsel</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-company2" class="input-group-text">
-                            <i class="bx bx-image"></i>
-                        </span>
-                        <input type="text"
-                               id="basic-icon-default-company"
-                               class="form-control"
-                               aria-label="ACME Inc."
-                               aria-describedby="basic-icon-default-company2"
-                               asp-for="@Model.Image" />
                     </div>
-                    <span class="text-danger" asp-validation-for="@Model.Image"></span>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Ana Görsel</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class="bx bx-image"></i>
+                            </span>
+                            <input type="text"
+                                   id="basic-icon-default-company"
+                                   class="form-control"
+                                   aria-label="ACME Inc."
+                                   aria-describedby="basic-icon-default-company2"
+                                   asp-for="@Model.Image" />
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Image"></span>
 
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-company">Kapasite</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-company2" class="input-group-text">
-                            <i class="bx bx-image"></i>
-                        </span>
-                        <input type="text"
-                               id="basic-icon-default-company"
-                               class="form-control"
-                               aria-label="ACME Inc."
-                               aria-describedby="basic-icon-default-company2"
-                               asp-for="@Model.Capacity" />
                     </div>
-                    <span class="text-danger" asp-validation-for="@Model.Capacity"></span>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Kapasite</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class="bx bx-image"></i>
+                            </span>
+                            <input type="text"
+                                   id="basic-icon-default-company"
+                                   class="form-control"
+                                   aria-label="ACME Inc."
+                                   aria-describedby="basic-icon-default-company2"
+                                   asp-for="@Model.Capacity" />
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Capacity"></span>
 
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-company">Kapak Görseli</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-company2" class="input-group-text">
-                            <i class="bx bx-image"></i>
-                        </span>
-                        <input type="text"
-                               id="basic-icon-default-company"
-                               class="form-control"
-                               aria-label="ACME Inc."
-                               aria-describedby="basic-icon-default-company2"
-                               asp-for="@Model.CoverImage" />
                     </div>
-                    <span class="text-danger" asp-validation-for="@Model.CoverImage"></span>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Kapak Görseli</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class="bx bx-image"></i>
+                            </span>
+                            <input type="text"
+                                   id="basic-icon-default-company"
+                                   class="form-control"
+                                   aria-label="ACME Inc."
+                                   aria-describedby="basic-icon-default-company2"
+                                   asp-for="@Model.CoverImage" />
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.CoverImage"></span>
 
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-company">Görsel 2</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-company2" class="input-group-text">
-                            <i class="bx bx-image"></i>
-                        </span>
-                        <input type="text"
-                               id="basic-icon-default-company"
-                               class="form-control"
-                               aria-label="ACME Inc."
-                               aria-describedby="basic-icon-default-company2"
-                               asp-for="@Model.Image2" />
                     </div>
-                    <span class="text-danger" asp-validation-for="@Model.Image2"></span>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-company">Görsel 2</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text">
+                                <i class="bx bx-image"></i>
+                            </span>
+                            <input type="text"
+                                   id="basic-icon-default-company"
+                                   class="form-control"
+                                   aria-label="ACME Inc."
+                                   aria-describedby="basic-icon-default-company2"
+                                   asp-for="@Model.Image2" />
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Image2"></span>
 
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-message">Detay 1</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-message2" class="input-group-text">
-                            <i class="bx bx-comment"></i>
-                        </span>
-                        <textarea id="basic-icon-default-message"
-                                  class="form-control"
-                                  aria-describedby="basic-icon-default-message2"
-                                  asp-for="@Model.Details1"></textarea>
                     </div>
-                    <span class="text-danger" asp-validation-for="@Model.Details1"></span>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-message">Detay 1</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-message2" class="input-group-text">
+                                <i class="bx bx-comment"></i>
+                            </span>
+                            <textarea id="basic-icon-default-message"
+                                      class="form-control"
+                                      aria-describedby="basic-icon-default-message2"
+                                      asp-for="@Model.Details1"></textarea>
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Details1"></span>
 
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-message">Detay 2</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-message2" class="input-group-text">
-                            <i class="bx bx-comment"></i>
-                        </span>
-                        <textarea id="basic-icon-default-message"
-                                  class="form-control"
-                                  aria-describedby="basic-icon-default-message2"
-                                  asp-for="@Model.Details2"></textarea>
                     </div>
-                    <span class="text-danger" asp-validation-for="@Model.Details2"></span>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-message">Detay 2</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-message2" class="input-group-text">
+                                <i class="bx bx-comment"></i>
+                            </span>
+                            <textarea id="basic-icon-default-message"
+                                      class="form-control"
+                                      aria-describedby="basic-icon-default-message2"
+                                      asp-for="@Model.Details2"></textarea>
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Details2"></span>
 
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-message">Açıklama</label>
-                    <div class="input-group input-group-merge">
-                        <span id="basic-icon-default-message2" class="input-group-text">
-                            <i class="bx bx-comment"></i>
-                        </span>
-                        <textarea id="basic-icon-default-message"
-                                  class="form-control"
-                                  aria-describedby="basic-icon-default-message2"
-                                  asp-for="@Model.Description"></textarea>
                     </div>
-                    <span class="text-danger" asp-validation-for="@Model.Description"></span>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-message">Açıklama</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-message2" class="input-group-text">
+                                <i class="bx bx-comment"></i>
+                            </span>
+                            <textarea id="basic-icon-default-message"
+                                      class="form-control"
+                                      aria-describedby="basic-icon-default-message2"
+                                      asp-for="@Model.Description"></textarea>
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Description"></span>
 
-                </div>
-                <button type="submit" class="btn btn-primary">Gönder</button>
-            </form>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gönder</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
+    </div>

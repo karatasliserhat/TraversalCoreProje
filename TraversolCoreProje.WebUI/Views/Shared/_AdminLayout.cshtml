@@ -9,7 +9,7 @@
       data-theme="theme-default"
       data-assets-path="~/sneat-1.0.0/assets/"
       data-template="vertical-menu-template-free">
-@await Component.InvokeAsync("_AdminLayoutHeaderPartialComponent") 
+@await Component.InvokeAsync("_AdminLayoutHeaderPartialComponent")
 
 <body>
     <div class="layout-wrapper layout-content-navbar">
@@ -25,9 +25,9 @@
 
                     <div class="container-xxl flex-grow-1 container-p-y">
 
-                        <div class="row">
-                            @RenderBody()
-                        </div>
+
+                        @RenderBody()
+
                     </div>
                     @await Component.InvokeAsync("_AdminLayoutFooterPartialComponent")
 
@@ -39,6 +39,6 @@
     </div>
 
     @await Component.InvokeAsync("_AdminLayoutScriptPartialComponent")
-
+    @RenderSection("Scripts", false)
 </body>
 </html>
