@@ -20,7 +20,7 @@ namespace TraversalCoreProje.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> CommentList()
         {
-            return CreateAction(await _CommentReadService.GetListAsync());
+            return CreateAction(await _CommentReadService.GetListWithDestinationCityAsync());
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetComment(int id)

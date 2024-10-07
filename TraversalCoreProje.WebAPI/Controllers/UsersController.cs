@@ -32,5 +32,15 @@ namespace TraversalCoreProje.WebAPI.Controllers
         {
             return CreateAction(await _userService.GetUserAsync(id));
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAllUser(int id)
+        {
+            return CreateAction(await _userService.GetListUserAsync());
+        }
+        [HttpDelete("{userId}")]
+        public async Task<IActionResult> DeleteUser(int userId)
+        {
+            return CreateAction(await _userService.DeleteUserAsync(userId));
+        }
     }
 }

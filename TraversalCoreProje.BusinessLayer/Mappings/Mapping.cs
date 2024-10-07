@@ -53,14 +53,25 @@ namespace TraversalCoreProje.BusinessLayer.Mappings
             CreateMap<Testimonial, CreateTestimonialDto>().ReverseMap();
             CreateMap<Testimonial, UpdateTestimonialDto>().ReverseMap();
 
-            CreateMap<Comment, ResultCommentDto>().ReverseMap();
+            CreateMap<Comment, ResultCommentDto>()
+                .ForMember(x => x
+                .DestinationCityName, member => member.MapFrom(x => x
+                .Destination.City))
+                .ReverseMap();
             CreateMap<Comment, CreateCommentDto>().ReverseMap();
             CreateMap<Comment, UpdateCommentDto>().ReverseMap();
+
 
             CreateMap<Reservation, ResultReservationDto>()
                 .ForMember(x => x
                 .DestinationCityName, member => member.MapFrom(x => x
                 .Destination.City))
+                .ForMember(x =>
+                x.PersonName, member => member.MapFrom(x => x
+                .AppUser.Name))
+                .ForMember(x =>
+                x.PersonSurname, member => member.MapFrom(x => x
+                .AppUser.Surname))
                 .ReverseMap();
             CreateMap<Reservation, CreateReservationDto>().ReverseMap();
             CreateMap<Reservation, UpdateReservationDto>().ReverseMap();

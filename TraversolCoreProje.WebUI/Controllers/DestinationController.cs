@@ -12,7 +12,7 @@ namespace TraversolCoreProje.WebUI.Controllers
         public DestinationController(IDestinationReadApiService destinationReadApiService, IDataProtectionProvider dataProtectionProvider, IUserService userService)
         {
             _destinationReadApiService = destinationReadApiService;
-            _dataProtector = dataProtectionProvider.CreateProtector("DestinationController");
+            _dataProtector = dataProtectionProvider.CreateProtector(nameof(DestinationController));
             _userService = userService;
         }
 

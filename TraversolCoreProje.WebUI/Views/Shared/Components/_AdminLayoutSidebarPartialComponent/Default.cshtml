@@ -57,13 +57,13 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item">
-            <a href="index.html" class="menu-link">
+            <a asp-action="Index" asp-controller="AdminDashboard" asp-area="Admin" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="index.html" class="menu-link">
+            <a asp-action="Index" asp-controller="AdminComment" asp-area="Admin" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-comment"></i>
                 <div data-i18n="Analytics">Yorumlar</div>
             </a>
@@ -75,7 +75,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="index.html" class="menu-link">
+            <a asp-area="Admin" asp-action="Index" asp-controller="AdminUser" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-smile"></i>
                 <div data-i18n="Analytics">Misafirler</div>
             </a>

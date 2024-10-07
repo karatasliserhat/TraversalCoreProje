@@ -16,17 +16,17 @@ namespace TraversolCoreProje.DataAccessLayer.EfCore.Repositories
 
         public async Task<List<Reservation>> ApprovalReservation(int id)
         {
-            return await _appDbContext.Reservations.Include(x => x.Destination).AsNoTracking().Where(x=> x.StatusL=="Onay Bekliyor" && x.AppUserId==id).ToListAsync();
+            return await _appDbContext.Reservations.Include(x => x.Destination).Include(y=> y.AppUser).AsNoTracking().Where(x=> x.StatusL=="Onay Bekliyor" && x.AppUserId==id).ToListAsync();
         }
 
         public async Task<List<Reservation>> CurrentReservation(int id)
         {
-            return await _appDbContext.Reservations.Include(x => x.Destination).AsNoTracking().Where(x => x.StatusL == "Onaylandı" && x.AppUserId == id).ToListAsync();
+            return await _appDbContext.Reservations.Include(x => x.Destination).Include(y => y.AppUser).AsNoTracking().Where(x => x.StatusL == "Onaylandı" && x.AppUserId == id).ToListAsync();
         }
 
         public async Task<List<Reservation>> OldReservation(int id)
         {
-            return await _appDbContext.Reservations.Include(x => x.Destination).AsNoTracking().Where(x => x.StatusL == "Geçmiş Rezervasyon" && x.AppUserId == id).ToListAsync();
+            return await _appDbContext.Reservations.Include(x => x.Destination).Include(y => y.AppUser).AsNoTracking().Where(x => x.StatusL == "Geçmiş Rezervasyon" && x.AppUserId == id).ToListAsync();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace TraversolCoreProje.WebUI.Areas.Member.Controllers
         private readonly IUserService _userService;
         public DestinationController(IDestinationReadApiService destinationReadApiService, IDataProtectionProvider dataProtectionProvider, IUserService userService)
         {
-            _dataProtector = dataProtectionProvider.CreateProtector("MemberDestinationController");
+            _dataProtector = dataProtectionProvider.CreateProtector(nameof(DestinationController));
             _destinationReadApiService = destinationReadApiService;
             _userService = userService;
         }

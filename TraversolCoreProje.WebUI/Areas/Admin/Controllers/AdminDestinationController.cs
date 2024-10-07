@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TraversalCoreProje.Shared.Interfaces;
 using TraversalCoreProje.ViewModels;
+using TraversolCoreProje.WebUI.Areas.Member.Controllers;
 
 namespace TraversolCoreProje.WebUI.Areas.Admin.Controllers
 {
@@ -20,7 +20,7 @@ namespace TraversolCoreProje.WebUI.Areas.Admin.Controllers
             _destinationReadApiService = destinationReadApiService;
             _destinationCommandApiService = destinationCommandApiService;
             _userService = userService;
-            _dataProtector = dataProtectionProvider.CreateProtector(nameof(AdminDestinationController));
+            _dataProtector = dataProtectionProvider.CreateProtector(nameof(DestinationController));
         }
 
         public async Task<IActionResult> Index()

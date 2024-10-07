@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using TraversalCoreProje.BusinessLayer.Interfaces.IUserServices;
 using TraversalCoreProje.CoreLayer.Concrete;
 using TraversolCoreProje.Dto.Dtos;
@@ -39,6 +40,28 @@ namespace TraversalCoreProje.BusinessLayer.Services
 
         }
 
+        public async Task<ResponseDto<NoContent>> DeleteUserAsync(int userId)
+        {
+            var dataUser = await _userManager.FindByIdAsync(userId.ToString());
+            if (dataUser is not null)
+            {
+                var result = await _userManager.DeleteAsync(dataUser);
+                if (result.Succeeded)
+                    return ResponseDto<NoContent>.Success(StatusCodes.Status204NoContent);
+                return ResponseDto<NoContent>.Fail("Bir Hata Meydana Geldi", StatusCodes.Status500InternalServerError);
+            }
+            return ResponseDto<NoContent>.Fail("User Bulunamadı", StatusCodes.Status400BadRequest);
+        }
+
+        public async Task<ResponseDto<List<ResultUserDto>>> GetListUserAsync()
+        {
+            var user = await _userManager.Users.ToListAsync();
+            if (user is null)
+                return ResponseDto<List<ResultUserDto>>.Fail("Kullanıcı Bulunamadı", StatusCodes.Status404NotFound);
+
+            return ResponseDto<List<ResultUserDto>>.Success(_mapper.Map<List<ResultUserDto>>(user), StatusCodes.Status200OK);
+        }
+
         public async Task<ResponseDto<ResultUserDto>> GetUserAsync(int userId)
         {
             var user = await _userManager.FindByIdAsync(userId.ToString());
@@ -55,10 +78,10 @@ namespace TraversalCoreProje.BusinessLayer.Services
                 return ResponseDto<NoContent>.Fail("Kullanıcı Bulunamadı", StatusCodes.Status404NotFound);
             if (userEditDto.Password is not null)
                 user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, userEditDto.Password);
-            
+
             if (userEditDto.ImageUrl is not null)
                 user.ImageUrl = userEditDto.ImageUrl;
-            
+
             if (userEditDto.Gender is not null)
                 user.Gender = userEditDto.Gender;
             user.Name = userEditDto.Name;

@@ -12,7 +12,7 @@ namespace TraversolCoreProje.WebUI.Controllers
         private readonly IDataProtector _dataProtector;
         public CommentController(ICommentCommandApiService commentCommandApiService, IDataProtectionProvider dataProtectionProvider, IUserService userService)
         {
-            _dataProtector = dataProtectionProvider.CreateProtector("DestinationController");
+            _dataProtector = dataProtectionProvider.CreateProtector(nameof(DestinationController));
             _commentCommandApiService = commentCommandApiService;
             _userService = userService;
         }

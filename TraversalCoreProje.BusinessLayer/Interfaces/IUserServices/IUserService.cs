@@ -10,5 +10,7 @@ namespace TraversalCoreProje.BusinessLayer.Interfaces.IUserServices
         Task<ResponseDto<CreateUserDto>> CreateUserAsync(CreateUserDto createUserDto);
         Task<ResponseDto<NoContent>> UserEditAsync(UserEditDto userEditDto);
         Task<ResponseDto<ResultUserDto>> GetUserAsync(int userId);
+        Task<ResponseDto<List<ResultUserDto>>> GetListUserAsync();
+        Task<ResponseDto<NoContent>> DeleteUserAsync(int userId);
     }
 }

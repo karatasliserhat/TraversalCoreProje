@@ -88,6 +88,8 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
 
             Services.AddScoped<IReservationReadRepository, ReservationReadRepository>();
 
+            Services.AddScoped<ICommentReadRepository, CommentReadRepository>();
+
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             Services.AddScoped(typeof(IGenericCommandService<,,>), typeof(GenericCommandService<,,>));
