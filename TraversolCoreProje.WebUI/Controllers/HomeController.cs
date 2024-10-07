@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TraversolCoreProje.WebUI.Models;
 
@@ -15,11 +15,15 @@ namespace TraversolCoreProje.WebUI.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Home Index Çağrıldı");
+            _logger.LogError("Home Index Hata");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            var date = DateTime.Now.ToLongDateString();
+            _logger.LogInformation(date + "Home Privacy Çağrıldı");
             return View();
         }
 

@@ -16,6 +16,15 @@ namespace TraversolCoreProje.WebUI.Extensions
         public static void AddService(this IServiceCollection Services, IConfiguration Configuration)
         {
 
+            Services.AddLogging(x =>
+            {
+                x.ClearProviders();
+                x.SetMinimumLevel(LogLevel.Debug);
+                x.AddDebug();
+            });
+
+
+
             Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, conf =>
             {
                 conf.LoginPath = new PathString("/Login/SignIn");

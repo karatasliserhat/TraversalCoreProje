@@ -7,5 +7,6 @@
         public string Image { get; set; }
         public string TwitterUrl { get; set; }
         public string InstagramUrl { get; set; }
+        public string DataProtect { get; set; }
     }
 }

@@ -1,0 +1,70 @@
+﻿@model List<ResultGuideViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+    int count = 0;
+}
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
+<div class="row">
+    <div class="card">
+
+        <h5 class="card-header">Rehberlerimiz</h5>
+        <div class="table-responsive text-nowrap">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="AdminGuide"><i class="bx bx-add-to-queue me-1"></i> Yeni Rehber</a>
+            <table class="table my-2">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Görsel</th>
+                        <th>Ad-Soyad</th>
+                        <th>Açıklama</th>
+                        <th>Durum</th>
+                        <th>Aksiyonlar</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+
+                    @if (Model is { Count: > 0 })
+                    {
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
+                                <td><img width="50" height="50" src="@item.Image" /></td>
+                                <td>@item.Name</td>
+                                <td>@item.Description</td>
+                                @if (item.Status is true)
+                                {
+                                    <td>
+                                        <a asp-action="ChangeToFalse" asp-controller="AdminGuide" class="btn btn-primary" asp-route-dataId="@item.DataProtect"> <i class="bx bx-edit me-1"></i>Pasif Yap</a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td><a asp-action="ChangeToTrue" asp-controller="AdminGuide" class="btn btn-info" asp-route-dataId="@item.DataProtect"><i class="bx bx-edit me-1"></i>Aktif Yap</a></td>
+                                }
+                                <td>
+                                    <a asp-action="Update" asp-controller="AdminGuide" class="btn btn-warning" asp-route-dataId="@item.DataProtect"><i class="bx bx-edit me-1"></i> Güncelle</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6">Rehber Bulunamadı...</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -30,6 +30,7 @@ namespace TraversalCoreProje.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> GuideCreate(CreateGuideDto createGuideDto)
         {
+            createGuideDto.Status = true;
             return CreateAction(await _GuideCommandService.CreateAsync(createGuideDto));
         }
         [HttpPut]

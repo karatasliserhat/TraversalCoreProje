@@ -5,8 +5,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+
+
 builder.Services.AddService(builder.Configuration);
+
+
 var app = builder.Build();
+var lf = app.Services.GetRequiredService<ILoggerFactory>();
+var path = Directory.GetCurrentDirectory();
+
+lf.AddFile($"{path}\\Logs\\logger1.txt");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
