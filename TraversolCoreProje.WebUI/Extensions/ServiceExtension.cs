@@ -194,6 +194,10 @@ namespace TraversolCoreProje.WebUI.Extensions
             {
                 opt.BaseAddress = new Uri(apiurl.UserControllerBaseUrl.ToString());
             });
+            Services.AddHttpClient<IExcelReportApiService, ExcelReportApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.ExcelReportControllerBaseUrl.ToString());
+            });
         }
     }
 }

@@ -19,5 +19,7 @@ namespace TraversalCoreProje.Shared.Services
         public string AccountControllerBaseUrl { get  ; set  ; }
         public string UserControllerBaseUrl { get  ; set  ; }
         public string ReserVationControllerBaseUrl { get  ; set  ; }
+        public string ExcelReportControllerBaseUrl { get; set; }
+
     }
 }
