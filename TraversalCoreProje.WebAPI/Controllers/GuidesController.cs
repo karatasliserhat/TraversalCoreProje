@@ -27,6 +27,16 @@ namespace TraversalCoreProje.WebAPI.Controllers
         {
             return CreateAction(await _GuideReadService.GetByIdAsync(id));
         }
+        [HttpGet("[Action]/{id}")]
+        public async Task<IActionResult> GuideStatusFalse(int id)
+        {
+            return CreateAction(await _GuideCommandService.GuideStatusFalseAsync(id));
+        }
+        [HttpGet("[Action]/{id}")]
+        public async Task<IActionResult> GuideStatusTrue(int id)
+        {
+            return CreateAction(await _GuideCommandService.GuideStatusTrueAsync(id));
+        }
         [HttpPost]
         public async Task<IActionResult> GuideCreate(CreateGuideDto createGuideDto)
         {

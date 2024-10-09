@@ -68,16 +68,34 @@ namespace TraversolCoreProje.WebUI.Areas.Admin.Controllers
             result.Errors.ForEach(x => { ModelState.AddModelError("", x); });
             return View(updateGuideViewModel);
         }
-
+        public async Task<IActionResult> Delete(string dataId)
+        {
+            var id = int.Parse(_dataProtector.Unprotect(dataId));
+            var result = await _guideCommandApiService.DeleteAsync(id, _userService.AccessToken);
+            if (result.StatusCode == StatusCodes.Status204NoContent)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            result.Errors.ForEach(x => { ModelState.AddModelError("", x); });
+            return View();
+        }
         public async Task<IActionResult> ChangeToTrue(string dataId)
         {
             var id = int.Parse(_dataProtector.Unprotect(dataId));
-            return RedirectToAction(nameof(Index));
+            var result = await _guideCommandApiService.GuideStatusChange("GuideStatusTrue", id);
+            if (result.StatusCode == StatusCodes.Status204NoContent)
+                return RedirectToAction(nameof(Index));
+            result.Errors.ForEach(x => { ModelState.AddModelError("", x); });
+            return View();
         }
         public async Task<IActionResult> ChangeToFalse(string dataId)
         {
             var id = int.Parse(_dataProtector.Unprotect(dataId));
-            return RedirectToAction(nameof(Index));
+            var result = await _guideCommandApiService.GuideStatusChange("GuideStatusFalse", id);
+            if (result.StatusCode == StatusCodes.Status204NoContent)
+                return RedirectToAction(nameof(Index));
+            result.Errors.ForEach(x => { ModelState.AddModelError("", x); });
+            return View();
         }
     }
 }
