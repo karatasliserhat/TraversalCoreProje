@@ -18,5 +18,6 @@
         public string UserControllerBaseUrl { get; set; }
         public string ReserVationControllerBaseUrl { get; set; }
         public string ExcelReportControllerBaseUrl { get; set; }
+        public string MailControllerBaseUrl { get; set; }
     }
 }

@@ -144,6 +144,9 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
 
             Services.AddScoped<IExcelReportService, ExcelReportService>();
             Services.AddScoped<IPdfReportService, PdfReportService>();
+
+
+            Services.AddScoped<ISendMailService, SendMailService>();
         }
     }
 }
