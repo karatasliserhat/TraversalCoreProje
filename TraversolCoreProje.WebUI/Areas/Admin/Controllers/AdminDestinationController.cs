@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.DataProtection;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing;
 using TraversalCoreProje.Shared.Interfaces;
 using TraversalCoreProje.ViewModels;
 using TraversolCoreProje.WebUI.Areas.Member.Controllers;
@@ -14,70 +16,83 @@ namespace TraversolCoreProje.WebUI.Areas.Admin.Controllers
         private readonly IDestinationCommandApiService _destinationCommandApiService;
         private readonly IUserService _userService;
         private readonly IDataProtector _dataProtector;
-
-        public AdminDestinationController(IDestinationReadApiService destinationReadApiService, IDestinationCommandApiService destinationCommandApiService, IUserService userService, IDataProtectionProvider dataProtectionProvider)
+        private readonly IMapper _mapper;
+        public AdminDestinationController(IDestinationReadApiService destinationReadApiService, IDestinationCommandApiService destinationCommandApiService, IUserService userService, IDataProtectionProvider dataProtectionProvider, IMapper mapper)
         {
             _destinationReadApiService = destinationReadApiService;
             _destinationCommandApiService = destinationCommandApiService;
             _userService = userService;
             _dataProtector = dataProtectionProvider.CreateProtector(nameof(DestinationController));
+            _mapper = mapper;
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(new UpdateDestinationViewModel());
+        }
+        public async Task<JsonResult> GetDestinations()
         {
             var data = await _destinationReadApiService.GetAllAsync(_userService.AccessToken);
             data.Data.ForEach(x => x.DataProtect = _dataProtector.Protect(x.Id.ToString()));
-            return View(data.Data);
+            return Json(data.Data);
         }
-        public IActionResult Create()
-        {
-            return View(new CreateDestinationViewModel());
-        }
+
         [HttpPost]
-        public async Task<IActionResult> Create(CreateDestinationViewModel createDestinationViewModel)
+        public async Task<JsonResult> Create(UpdateDestinationViewModel updateDestinationViewModel)
         {
             if (!ModelState.IsValid)
-                return View(createDestinationViewModel);
-            var result = await _destinationCommandApiService.CreateAsync(createDestinationViewModel, _userService.AccessToken);
+            {
+                var allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return Json(new { success = false, Errors = allErrors });
+            }
+
+            var result = await _destinationCommandApiService.CreateAsync(_mapper.Map<CreateDestinationViewModel>(updateDestinationViewModel), _userService.AccessToken);
             if (result.StatusCode == StatusCodes.Status201Created)
             {
-                return RedirectToAction(nameof(Index));
+                return Json("Rota Kaydedildi");
             }
             result.Errors.ForEach(x =>
             {
                 ModelState.AddModelError("", x);
             });
-            return View(createDestinationViewModel);
+            return Json(updateDestinationViewModel);
 
         }
 
-        public async Task<IActionResult> Update(string dataId)
+        [HttpGet]
+        public async Task<JsonResult> Update(string dataId)
         {
             var id = int.Parse(_dataProtector.Unprotect(dataId));
             var result = await _destinationCommandApiService.UpdateGetByIdAsync(id, _userService.AccessToken);
-            return View(result.Data);
+            return Json(result.Data);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateDestinationViewModel updateDestinationViewModel)
+        public async Task<JsonResult> Update(UpdateDestinationViewModel updateDestinationViewModel)
         {
             if (!ModelState.IsValid)
-                return View(updateDestinationViewModel);
+            {
+                var allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return Json(new { success = false, Errors = allErrors });
+            }
+               
             var result = await _destinationCommandApiService.UpdateAsync(updateDestinationViewModel, _userService.AccessToken);
             if (result.StatusCode == StatusCodes.Status204NoContent)
-                return RedirectToAction(nameof(Index));
+                return Json("Rota Güncellendi");
             result.Errors.ForEach(x => { ModelState.AddModelError("", x); });
-            return View(updateDestinationViewModel);
+            return Json("Rota Güncellenemedi");
         }
-        public async Task<IActionResult> Delete(string dataId)
+        [HttpPost]
+        public async Task<JsonResult> Delete(string dataId)
         {
             var id = int.Parse(_dataProtector.Unprotect(dataId));
             var result = await _destinationCommandApiService.DeleteAsync(id, _userService.AccessToken);
-            if (result.StatusCode==StatusCodes.Status204NoContent)
+            if (result.StatusCode == StatusCodes.Status204NoContent)
             {
-                return RedirectToAction(nameof(Index));
+                return Json("Rota Silindi");
             }
             result.Errors.ForEach(x => { ModelState.AddModelError("", x); });
-            return View();
+            return Json("Rota Silinemedi");
         }
     }
 }

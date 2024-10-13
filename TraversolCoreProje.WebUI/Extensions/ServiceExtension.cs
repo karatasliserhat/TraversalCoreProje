@@ -8,6 +8,7 @@ using TraversalCoreProje.ValidationLayer.Validations;
 using TraversalCoreProje.Shared.Interfaces;
 using TraversalCoreProje.Shared.Services;
 using TraversalCoreProje.Shared.Services.UserServices;
+using System.Reflection;
 
 namespace TraversolCoreProje.WebUI.Extensions
 {
@@ -57,6 +58,8 @@ namespace TraversolCoreProje.WebUI.Extensions
             {
                 return opt.GetRequiredService<IOptions<ApiSetting>>().Value;
             });
+
+            Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             var scope = Services.BuildServiceProvider();
             var apiurl = scope.GetRequiredService<IOptions<ApiSetting>>().Value;

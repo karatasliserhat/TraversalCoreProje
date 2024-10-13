@@ -1,17 +1,14 @@
-﻿@model List<ResultDestinationViewModel>
+﻿@model UpdateDestinationViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@{
-    int count = 0;
-}
+
 <div class="row">
     <div class="card">
-
         <h5 class="card-header">Tur Rotaları</h5>
         <div class="table-responsive text-nowrap">
-            <a class="btn btn-primary" asp-action="Create" asp-controller="AdminDestination"><i class="bx bx-add-to-queue me-1"></i> Yeni Rota</a>
+            <button class="btn btn-primary" id="btnAdd"><i class="bx bx-add-to-queue me-1"></i> Yeni Rota</button>
             <table class="table my-2">
                 <thead>
                     <tr>
@@ -24,43 +21,93 @@
                         <th>Aksiyonlar</th>
                     </tr>
                 </thead>
-                <tbody class="table-border-bottom-0">
-
-                    @if (Model is { Count: > 0 })
-                    {
-                        @foreach (var item in Model)
-                        {
-                            count++;
-                            <tr>
-                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
-                                <td>@item.City</td>
-                                <td>@item.Price ₺</td>
-                                <td>@item.Capacity</td>
-                                <td><span class="badge bg-label-primary me-1">@(item.Status==true?"Aktif":"Pasif")</span></td>
-                                <td><a class="btn btn-outline-info" asp-action="DestinationDetail" asp-controller="Destination" asp-route-dataId="@item.DataProtect">Sitede Gör</a></td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" asp-action="Update" asp-controller="AdminDestination" asp-route-dataId="@item.DataProtect"><i class="bx bx-edit-alt me-1"></i> Güncelle</a>
-                                            <a class="dropdown-item" asp-action="Delete" asp-controller="AdminDestination" asp-route-dataId="@item.DataProtect"><i class="bx bx-trash me-1"></i> Sil</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="7">Rota Bulunamadı...</td>
-                        </tr>
-                    }
+                <tbody class="table-border-bottom-0" id="tblBody">
+                    <!--Ajaxtan veriler geliyor.-->
                 </tbody>
             </table>
         </div>
     </div>
-
 </div>
+
+
+<!--Add or Update-->
+<div class="modal" id="DestinationModal">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle"></h3>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" asp-for="@Model.Id" value="0" />
+                <div class="text-danger" id="modelOnly"></div>
+                <div class="mb-2">
+                    <label>Şehir</label>
+                    <input type="text" asp-for="@Model.City" class="form-control" />
+                    <span class="text-danger" asp-validation-for="@Model.City"></span>
+                </div>
+                <div class="mb-2">
+                    <label>Gün Gece</label>
+                    <input type="text" asp-for="@Model.DayNight" class="form-control" />
+                    <span class="text-danger" asp-validation-for="@Model.DayNight"></span>
+                </div>
+
+                <div class="mb-2">
+                    <label>Fiyat</label>
+                    <input type="text" asp-for="@Model.Price" class="form-control" />
+                    <span class="text-danger" asp-validation-for="@Model.Price"></span>
+                </div>
+                <div class="mb-2">
+                    <label>Ana Görsel</label>
+                    <input type="text" asp-for="@Model.Image" class="form-control" />
+                    <span class="text-danger" asp-validation-for="@Model.Image"></span>
+                </div>
+                <div class="mb-2">
+                    <label>Kapasite</label>
+                    <input type="text" asp-for="@Model.Capacity" class="form-control" />
+                    <span class="text-danger" asp-validation-for="@Model.Capacity"></span>
+                </div>
+                <div class="mb-2">
+                    <label>Kapak Görseli</label>
+                    <input type="text" asp-for="@Model.CoverImage" class="form-control" />
+                    <span class="text-danger" asp-validation-for="@Model.CoverImage"></span>
+                </div>
+                <div class="mb-2">
+                    <label>Görsel 2</label>
+                    <input type="text" asp-for="@Model.Image2" class="form-control" />
+                    <span class="text-danger" asp-validation-for="@Model.Image2"></span>
+                </div>
+                <div class="mb-2">
+                    <label>Detay 1</label>
+                    <textarea cols="5" rows="5" asp-for="@Model.Details1" class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for="@Model.Details1"></span>
+                </div>
+                <div class="mb-2">
+                    <label>Detay 2</label>
+                    <textarea cols="5" rows="5" asp-for="@Model.Details2" class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for="@Model.Details2"></span>
+                </div>
+                <div class="mb-2">
+                    <label>Açıklama</label>
+                    <textarea cols="5" rows="5" asp-for="@Model.Description" class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for="@Model.Description"></span>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="Save" type="submit" onclick="Insert();">Kaydet</button>
+                    <button class="btn btn-warning" id="Update" type="submit" style="display:none" onclick="Update();">Güncelle</button>
+                    <button class="btn btn-danger" data-bs-dismiss="modal" type="submit" onclick="HideModal();">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/DestinationJs/destination.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+}
+

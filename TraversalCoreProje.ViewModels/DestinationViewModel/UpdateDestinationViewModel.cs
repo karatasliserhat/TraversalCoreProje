@@ -12,5 +12,6 @@
         public string Details2 { get; set; }
         public string CoverImage { get; set; }
         public int Capacity { get; set; }
+
     }
 }

@@ -10,7 +10,7 @@
       data-assets-path="~/sneat-1.0.0/assets/"
       data-template="vertical-menu-template-free">
 @await Component.InvokeAsync("_AdminLayoutHeaderPartialComponent")
-
+@RenderSection("Styles", false);
 <body>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
