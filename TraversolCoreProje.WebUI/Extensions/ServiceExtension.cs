@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
-using TraversalCoreProje.ValidationLayer.Validations;
+using System.Reflection;
 using TraversalCoreProje.Shared.Interfaces;
 using TraversalCoreProje.Shared.Services;
 using TraversalCoreProje.Shared.Services.UserServices;
-using System.Reflection;
+using TraversalCoreProje.ValidationLayer.Validations;
 
 namespace TraversolCoreProje.WebUI.Extensions
 {
@@ -187,6 +187,15 @@ namespace TraversolCoreProje.WebUI.Extensions
             Services.AddHttpClient<IReservationReadApiService, ReservationReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiurl.ReserVationControllerBaseUrl.ToString());
+            });
+
+            Services.AddHttpClient<IContactUsCommandApiService, ContactUsCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.ContactUsControllerBaseUrl.ToString());
+            });
+            Services.AddHttpClient<IContactUsReadApiService, ContactUsReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.ContactUsControllerBaseUrl.ToString());
             });
 
             Services.AddHttpClient<IAccountApiService, AccountApiService>(opt =>

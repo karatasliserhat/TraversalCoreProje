@@ -25,6 +25,10 @@ namespace TraversalCoreProje.BusinessLayer.Mappings
             CreateMap<Contact, CreateContactDto>().ReverseMap();
             CreateMap<Contact, UpdateContactDto>().ReverseMap();
 
+            CreateMap<ContactUs, ResultContactUsDto>().ReverseMap();
+            CreateMap<ContactUs, CreateContactUsDto>().ReverseMap();
+            CreateMap<ContactUs, UpdateContactUsDto>().ReverseMap();
+
             CreateMap<Destination, ResultDestinationDto>().ReverseMap();
             CreateMap<Destination, CreateDestinationDto>().ReverseMap();
             CreateMap<Destination, UpdateDestinationDto>().ReverseMap();

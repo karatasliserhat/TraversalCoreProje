@@ -1,0 +1,60 @@
+﻿@model List<ResultContactUsViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+    int count = 0;
+}
+<div class="row">
+    <div class="card">
+
+        <h5 class="card-header">Gelen Mesajlar</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table my-2">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Gönderen</th>
+                        <th>Eposta</th>
+                        <th>Konu</th>
+                        <th>İçerik</th>
+                        <th>Mesaj Tarihi</th>
+                        <th>Mesajı Aç</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+
+                    @if (Model is { Count: > 0 })
+                    {
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
+                                <td>@item.Name</td>
+                                <td>@item.Mail</td>
+                                <td>@item.Subject</td>
+                                <td>@item.MessageBody</td>
+                                <td>@item.MessageDate.ToShortDateString()</td>
+                                <td>
+
+                                    <a class="btn btn-outline-danger " asp-action="ContatUsChangeStatusFalse" asp-controller="AdminContactUs" asp-route-dataId="@item.DataProtect">Sil</a>|
+                                    <a class="btn btn-outline-info" asp-action="#" asp-controller="#" asp-route-dataId="@item.DataProtect">Mesajı Aç</a>
+
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td class="text-center" colspan="7">Mesaj Bulunamadı...</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

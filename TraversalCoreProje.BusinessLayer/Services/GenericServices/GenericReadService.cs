@@ -29,11 +29,10 @@ namespace TraversalCoreProje.BusinessLayer.Services
         public async Task<ResponseDto<List<ResultDto>>> GetListAsync()
         {
             var data = _mapper.Map<List<ResultDto>>(await _genericReadRepository.GetListAsync());
-            if (data is { Count: > 0 })
-                return ResponseDto<List<ResultDto>>.Success(data, StatusCodes.Status200OK);
-            return ResponseDto<List<ResultDto>>.Fail("Data Yok", StatusCodes.Status404NotFound);
+
+            return ResponseDto<List<ResultDto>>.Success(data, StatusCodes.Status200OK);
         }
 
-       
+
     }
 }

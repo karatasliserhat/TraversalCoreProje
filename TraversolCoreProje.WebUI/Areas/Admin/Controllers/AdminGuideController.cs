@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using TraversalCoreProje.Shared.Interfaces;
-using TraversalCoreProje.Shared.Services;
 using TraversalCoreProje.ViewModels;
 
 namespace TraversolCoreProje.WebUI.Areas.Admin.Controllers

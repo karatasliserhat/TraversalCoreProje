@@ -18,6 +18,7 @@ using TraversalCoreProje.CoreLayer.Concrete;
 using TraversalCoreProje.ValidationLayer.Validations;
 using TraversolCoreProje.DataAccessLayer.Concreate;
 using TraversolCoreProje.DataAccessLayer.EfCore.Interfaces;
+using TraversolCoreProje.DataAccessLayer.EfCore.Interfaces.IContactUsRepositories;
 using TraversolCoreProje.DataAccessLayer.EfCore.Repositories;
 using TraversolCoreProje.DataAccessLayer.Interfaces;
 using TraversolCoreProje.DataAccessLayer.Repository;
@@ -99,6 +100,11 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
             Services.AddScoped(typeof(IGenericCommandService<,,>), typeof(GenericCommandService<,,>));
             Services.AddScoped(typeof(IGenericReadService<,>), typeof(GenericReadService<,>));
 
+
+
+            Services.AddScoped<IContactUsReadRepositories, ContactUsReadRepository>();
+            Services.AddScoped<IContactUsCommandServices, ContactUsCommandService>();
+            Services.AddScoped<IContactUsReadServices, ContactUsReadService>();
 
             Services.AddScoped<IAboutCommandService, AboutCommandService>();
             Services.AddScoped<IAboutReadService, AboutReadService>();
