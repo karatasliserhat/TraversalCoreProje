@@ -146,6 +146,8 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
             Services.AddScoped<ICommentCommandService, CommentCommandService>();
             Services.AddScoped<ICommentReadService, CommentReadService>();
 
+            Services.AddScoped<IAnnouncementReadService, AnnouncementReadService>();
+            Services.AddScoped<IAnnouncementCommandService, AnnouncementCommandService>();
             //reportsServices
 
             Services.AddScoped<IExcelReportService, ExcelReportService>();

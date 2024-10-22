@@ -22,6 +22,7 @@ namespace TraversalCoreProje.Shared.Services
         public string ExcelReportControllerBaseUrl { get; set; }
         public string MailControllerBaseUrl { get; set; }
         public string ContactUsControllerBaseUrl { get; set; }
+        public string AnnouncementsControllerBaseUrl { get; set; }
 
 
     }

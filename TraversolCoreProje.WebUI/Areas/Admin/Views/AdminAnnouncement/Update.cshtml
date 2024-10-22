@@ -1,0 +1,55 @@
+﻿@model UpdateAnnouncementViewModel
+@{
+    ViewData["Title"] = "UpdateAnnouncement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Bildirim Güncelleme</h5>
+                <small class="text-muted float-end">Bildirim Ekleme</small>
+            </div>
+            <div class="card-body">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form asp-action="Update" asp-controller="AdminAnnouncement" method="post">
+                    <input type="hidden" asp-for="@Model.Id"/>
+                    <input type="hidden" asp-for="@Model.Date"/>
+                    <input type="hidden" asp-for="@Model.Status"/>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-fullname">Başlık</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                                <i class="bx bxs-city"></i>
+                            </span>
+                            <input type="text"
+                                   class="form-control"
+                                   id="basic-icon-default-fullname"
+                                   aria-label="John Doe"
+                                   aria-describedby="basic-icon-default-fullname2"
+                                   asp-for="@Model.Title" />
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Title"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-message">İçerik</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-message2" class="input-group-text">
+                                <i class="bx bx-comment"></i>
+                            </span>
+                            <textarea id="basic-icon-default-message"
+                                      class="form-control"
+                                      aria-describedby="basic-icon-default-message2"
+                                      asp-for="@Model.Content"></textarea>
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Content"></span>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

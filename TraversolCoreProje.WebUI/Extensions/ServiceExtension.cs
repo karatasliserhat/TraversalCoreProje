@@ -197,6 +197,15 @@ namespace TraversolCoreProje.WebUI.Extensions
             {
                 opt.BaseAddress = new Uri(apiurl.ContactUsControllerBaseUrl.ToString());
             });
+            
+            Services.AddHttpClient<IAnnouncementCommandApiService, AnnouncementCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.AnnouncementsControllerBaseUrl.ToString());
+            });
+            Services.AddHttpClient<IAnnouncementReadApiService, AnnouncementReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.AnnouncementsControllerBaseUrl.ToString());
+            });
 
             Services.AddHttpClient<IAccountApiService, AccountApiService>(opt =>
             {

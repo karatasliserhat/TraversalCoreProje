@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
-using System.Drawing;
 using TraversalCoreProje.Shared.Interfaces;
 using TraversalCoreProje.ViewModels;
 using TraversolCoreProje.WebUI.Areas.Member.Controllers;
