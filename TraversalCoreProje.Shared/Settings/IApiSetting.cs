@@ -21,6 +21,8 @@
         public string MailControllerBaseUrl { get; set; }
         public string ContactUsControllerBaseUrl { get; set; }
         public string AnnouncementsControllerBaseUrl { get; set; }
+        public string VisitorsControllerBaseUrl { get; set; }
+
 
     }
 }

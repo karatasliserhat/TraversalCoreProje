@@ -224,6 +224,15 @@ namespace TraversolCoreProje.WebUI.Extensions
             {
                 opt.BaseAddress = new Uri(apiurl.MailControllerBaseUrl.ToString());
             });
+
+            Services.AddHttpClient<IVisitorCommandApiService, VisitorCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.VisitorsControllerBaseUrl.ToString());
+            });
+            Services.AddHttpClient<IVisitorReadApiService, VisitorReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiurl.VisitorsControllerBaseUrl.ToString());
+            });
         }
     }
 }

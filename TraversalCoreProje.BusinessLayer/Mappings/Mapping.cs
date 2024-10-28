@@ -83,6 +83,10 @@ namespace TraversalCoreProje.BusinessLayer.Mappings
                 .ReverseMap();
             CreateMap<Reservation, CreateReservationDto>().ReverseMap();
             CreateMap<Reservation, UpdateReservationDto>().ReverseMap();
+
+            CreateMap<Visitor, ResultVisitorDto>().ReverseMap();
+            CreateMap<Visitor, CreateVisitorDto>().ReverseMap();
+            CreateMap<Visitor, UpdateVisitorDto>().ReverseMap();
         }
     }
 }
