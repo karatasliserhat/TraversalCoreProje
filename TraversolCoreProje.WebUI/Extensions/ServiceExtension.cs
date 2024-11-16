@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
 using System.Reflection;
+using TraversalCoreProje.Shared.Interface;
 using TraversalCoreProje.Shared.Interfaces;
 using TraversalCoreProje.Shared.Services;
 using TraversalCoreProje.Shared.Services.UserServices;
@@ -197,7 +198,7 @@ namespace TraversolCoreProje.WebUI.Extensions
             {
                 opt.BaseAddress = new Uri(apiurl.ContactUsControllerBaseUrl.ToString());
             });
-            
+
             Services.AddHttpClient<IAnnouncementCommandApiService, AnnouncementCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiurl.AnnouncementsControllerBaseUrl.ToString());
@@ -233,6 +234,9 @@ namespace TraversolCoreProje.WebUI.Extensions
             {
                 opt.BaseAddress = new Uri(apiurl.VisitorsControllerBaseUrl.ToString());
             });
+            Services.AddHttpClient<IMovieApiReadService, MovieApiReadService>();
+            Services.AddHttpClient<IBookingExchangeReadApiServices, BookingExchangeReadApiServices>();
+            Services.AddHttpClient<IBookingHotelSearchReadApiService, BookingHotelSearchReadApiServices>();
         }
     }
 }

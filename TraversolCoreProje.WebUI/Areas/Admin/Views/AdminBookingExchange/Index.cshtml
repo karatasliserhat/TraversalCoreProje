@@ -1,0 +1,47 @@
+﻿@model BookingExchangeDataViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+    int count = 0;
+}
+<div class="row">
+    <div class="card">
+
+        <h5 class="card-header">Api Booking Kur Bilgileri</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table my-2">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kur Adı</th>
+                        <th>Kur Oranı</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+
+                    @if (Model.base_currency is not null)
+                    {
+                        @foreach (var item in Model.exchange_rates)
+                        {
+                            count++;
+                            <tr>
+                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
+                                <td>@item.currency</td>
+                                <td>@item.exchange_rate_buy</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5">Kur Bulunamadı...</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
