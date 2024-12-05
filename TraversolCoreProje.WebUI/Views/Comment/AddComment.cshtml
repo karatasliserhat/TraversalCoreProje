@@ -15,12 +15,6 @@
             <textarea asp-for="@Model.Content" class="form-control" placeholder="Yorumunuz" spellcheck="false" required></textarea>
             <span class="text-danger" asp-validation-for="@Model.Content"></span>
         </div>
-        <div class="input-grids row">
-            <div class="form-group col-lg-6">
-                <input type="text" asp-for="@Model.User" class="form-control" required placeholder="Adınız Soyadınız">
-                <span class="text-danger" asp-validation-for="@Model.User"></span>
-            </div>
-        </div>
         <div class="submit text-right">
             <button class="btn btn-style btn-primary">Yorum Gönder </button>
         </div>

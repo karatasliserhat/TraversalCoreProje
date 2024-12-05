@@ -127,11 +127,11 @@ namespace TraversolCoreProje.WebUI.Extensions
                 opt.BaseAddress = new Uri(apiurl.AboutControllerBaseUrl.ToString());
             });
 
-            Services.AddHttpClient<IContacCommandApiService, ContactCommandApiService>(opt =>
+            Services.AddHttpClient<IContactCommandApiService, ContactCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiurl.ContactControllerBaseUrl.ToString());
             });
-            Services.AddHttpClient<IContacReadApiService, ContactReadApiServices>(opt =>
+            Services.AddHttpClient<IContactReadApiService, ContactReadApiServices>(opt =>
             {
                 opt.BaseAddress = new Uri(apiurl.ContactControllerBaseUrl.ToString());
             });

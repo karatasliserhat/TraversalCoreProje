@@ -20,6 +20,7 @@ namespace TraversolCoreProje.WebUI.Areas.Member.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.T1 = "Rotalar";
             var response = await _destinationReadApiService.GetAllAsync(_userService.AccessToken);
             response.Data.ForEach(x => x.DataProtect = _dataProtector.Protect(x.Id.ToString()));
             return View(response.Data);

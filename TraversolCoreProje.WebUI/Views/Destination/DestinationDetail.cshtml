@@ -21,20 +21,20 @@
 <div class="py-5 w3l-homeblock1 text-center">
     <div class="container mt-md-3">
         <h3 class="blog-desc-big text-center mb-4">
-            Your Blog Posts are Boring? Here are 9 Tips for
-            Making your Writing more Interesting
+            Alanında en yetkin rehberlermizle 
+            en güncel seyehat hikayelerimizi okumalısınız!
         </h3>
         <div class="blog-post-align">
             <div class="blog-post-img">
-                <a href="#"><img src="~/Traversal-Liberty/assets/images/c1.jpg" alt="" class="rounded-circle img-fluid" /></a>
+                <a href="#"><img src="@Model.GuideImage" alt="" class="rounded-circle img-fluid" /></a>
             </div>
             <div class="blog-post-info">
                 <div class="author align-items-center mb-1">
-                    <a href="#">Johnson smith</a> in <a href="#url">Traversal</a>
+                    <a href="#">@Model.GuidName</a> Tur Rotaları: <a href="#url">@Model.GuideDescription</a>
                 </div>
                 <ul class="blog-meta">
                     <li class="meta-item blog-lesson">
-                        <span class="meta-value"> June 13, 2020 </span>
+                        <span class="meta-value"> @Model.Date.ToString("dd-MMM-yyyy") </span>
                     </li>
                     <li class="meta-item blog-students">
                         <span class="meta-value"> 6min read</span>
@@ -98,14 +98,13 @@
                     <div class="row align-items-center">
                         <div class="col-sm-3 col-6">
                             <div>
-                                <img src="~/Traversal-Liberty/assets/images/c3.jpg" alt="" class="rounded-circle img-fluid">
+                                <img src="@Model.GuideImage" alt="" class="rounded-circle img-fluid">
                             </div>
                         </div>
                         <div class="col-sm-9 mt-sm-0 mt-3">
-                            <h3 class="mb-3 title">Alexander Ronald</h3>
+                            <h3 class="mb-3 title">@Model.GuidName</h3>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, sed et excepturi.
-                                Distinctio fugit odit? Fugit ipsam. Lorem ipsum dolor sit.
+                               @Model.Description
                             </p>
                             <ul class="author-icons mt-4">
                                 <li>

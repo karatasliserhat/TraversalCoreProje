@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 using TraversalCoreProje.BusinessLayer.Interfaces;
 using TraversolCoreProje.Dto.Dtos;
@@ -25,11 +26,17 @@ namespace TraversalCoreProje.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDestination(int id)
         {
-            return CreateAction(await _DestinationReadService.GetByIdAsync(id));
+            return CreateAction(await _DestinationReadService.DestinationwithGuidebyDestinationId(id));
+        }
+        [HttpGet("[Action]")]
+        public async Task<IActionResult> GetLastFourDestination()
+        {
+            return CreateAction(await _DestinationReadService.GetLastFourDestinationIdAsync());
         }
         [HttpPost]
         public async Task<IActionResult> DestinationCreate(CreateDestinationDto createDestinationDto)
         {
+            createDestinationDto.Date = DateTime.Now;
             return CreateAction(await _DestinationCommandService.CreateAsync(createDestinationDto));
         }
         [HttpPut]

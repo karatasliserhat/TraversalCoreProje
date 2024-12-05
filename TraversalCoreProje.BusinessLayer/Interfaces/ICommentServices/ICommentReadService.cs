@@ -8,5 +8,6 @@ namespace TraversalCoreProje.BusinessLayer.Interfaces
     {
         Task<ResponseDto<List<ResultCommentDto>>> GetListByDestinationIdAsync(int id);
         Task<ResponseDto<List<ResultCommentDto>>> GetListWithDestinationCityAsync();
+        Task<ResponseDto<List<ResultCommentDto>>> CommentAllWithAsppUserIncludeByIdAsync(int destinationId);
     }
 }

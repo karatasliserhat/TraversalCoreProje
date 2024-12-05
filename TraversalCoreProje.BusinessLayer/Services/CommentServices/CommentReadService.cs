@@ -19,6 +19,12 @@ namespace TraversalCoreProje.BusinessLayer.Services
             _mapper = mapper;
         }
 
+        public async Task<ResponseDto<List<ResultCommentDto>>> CommentAllWithAsppUserIncludeByIdAsync(int destinationId)
+        {
+            var result = _mapper.Map<List<ResultCommentDto>>(await _commentReadRepository.CommentAllWithAsppUserIncludeByIdAsync(destinationId));
+            return ResponseDto<List<ResultCommentDto>>.Success(result, StatusCodes.Status200OK);
+        }
+
         public async Task<ResponseDto<List<ResultCommentDto>>> GetListByDestinationIdAsync(int id)
         {
             var result = _mapper.Map<List<ResultCommentDto>>(await _commentReadRepository.GetListByFilter(x => x.DestinationId == id));

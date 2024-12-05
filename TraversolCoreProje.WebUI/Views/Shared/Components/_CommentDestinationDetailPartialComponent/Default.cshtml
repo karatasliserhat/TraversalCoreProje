@@ -7,14 +7,14 @@
         {
             <div class="media mt-4">
                 <div class="img-circle">
-                    <img src="~/Traversal-Liberty/assets/images/c1.jpg" class="img-fluid" alt="...">
+                    <img src="@item.ImageFile" class="img-fluid" alt="...">
                 </div>
                 <div class="media-body">
 
                     <ul class="time-rply mb-2">
                         <li>
-                            <a href="#URL" class="name mt-0 mb-2 d-block">@item.User</a>
-                            June 15th, 2020 - 10:02 pm
+                            <a href="#URL" class="name mt-0 mb-2 d-block">@item.FullName</a>
+                            @item.Date.ToString("dd.MMM.yyyy")
 
                         </li>
                         <li class="reply-last">

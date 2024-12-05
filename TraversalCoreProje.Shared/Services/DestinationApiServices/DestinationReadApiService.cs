@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using TraversalCoreProje.Shared.Interfaces;
+﻿using TraversalCoreProje.Shared.Interfaces;
 using TraversalCoreProje.ViewModels;
 
 namespace TraversalCoreProje.Shared.Services

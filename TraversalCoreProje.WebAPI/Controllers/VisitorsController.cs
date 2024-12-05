@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using TraversalCoreProje.BusinessLayer.Interfaces;
 using TraversolCoreProje.Dto.Dtos;
+using TraversolCoreProje.Dto.Dtos.Enums;
 
 namespace TraversalCoreProje.WebAPI.Controllers
 {
@@ -27,9 +30,33 @@ namespace TraversalCoreProje.WebAPI.Controllers
         {
             return CreateAction(await _VisitorReadService.GetByIdAsync(id));
         }
+        [HttpGet("[Action]")]
+        public IActionResult CreateVisitor()
+        {
+            Random random = new Random();
+            Enumerable.Range(1, 10).ToList().ForEach(x =>
+            {
+                foreach (ECity item in Enum.GetValues(typeof(ECity)))
+                {
+                    var createVisitorDto = new CreateVisitorDto
+                    {
+                        City = item,
+                        VisitorDate = DateTime.Now.AddDays(x).Date,
+                        Count = random.Next(1000, 2000),
+                        Status = true
+                    };
+                    _VisitorCommandService.CreateAsync(createVisitorDto).Wait();
+                    System.Threading.Thread.Sleep(1000);
+                }
+
+            });
+            return Ok("Ziyaretçiler başarılı bir şekilde eklendi");
+        }
         [HttpPost]
         public async Task<IActionResult> VisitorCreate(CreateVisitorDto createVisitorDto)
         {
+
+            createVisitorDto.VisitorDate = DateTime.Now;
             createVisitorDto.Status = true;
             return CreateAction(await _VisitorCommandService.CreateAsync(createVisitorDto));
         }

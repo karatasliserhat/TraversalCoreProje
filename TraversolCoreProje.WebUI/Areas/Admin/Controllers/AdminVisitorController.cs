@@ -24,9 +24,10 @@ namespace TraversolCoreProje.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var data = await _VisitorReadApiService.GetAllAsync(_userService.AccessToken);
-            data.Data.ForEach(x => x.DataProtect = _dataProtector.Protect(x.Id.ToString()));
-            return View(data.Data);
+            //var data = await _VisitorReadApiService.GetAllAsync(_userService.AccessToken);
+            //data.Data.ForEach(x => x.DataProtect = _dataProtector.Protect(x.Id.ToString()));
+            //return View(data.Data);
+            return View();
         }
 
         [HttpGet]

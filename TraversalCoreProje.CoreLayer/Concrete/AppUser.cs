@@ -9,5 +9,6 @@ namespace TraversalCoreProje.CoreLayer.Concrete
         public string ImageUrl { get; set; }
         public string Gender { get; set; }
         public virtual List<Reservation> Reservations { get; set; }
+        public virtual List<Comment> Comments { get; set; }
     }
 }

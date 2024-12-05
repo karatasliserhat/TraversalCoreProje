@@ -14,9 +14,14 @@ namespace TraversolCoreProje.DataAccessLayer.EfCore.Repositories
             _appDbContext = appDbContext;
         }
 
+        public async Task<List<Comment>> CommentAllWithAsppUserIncludeByIdAsync(int destinationId)
+        {
+            return await _appDbContext.Comments.Include(x => x.AppUser).Where(x=> x.DestinationId==destinationId).AsNoTracking().ToListAsync();
+        }
+
         public async Task<List<Comment>> CommentAllWithDestinationCityIncludeAsync()
         {
-            return await _appDbContext.Comments.Include(x => x.Destination).AsNoTracking().ToListAsync();
+            return await _appDbContext.Comments.Include(x => x.Destination).Include(x=> x.AppUser).AsNoTracking().ToListAsync();
         }
     }
 }

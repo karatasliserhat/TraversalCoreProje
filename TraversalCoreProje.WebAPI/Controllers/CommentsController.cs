@@ -30,7 +30,7 @@ namespace TraversalCoreProje.WebAPI.Controllers
         [HttpGet("[Action]/{id}")]
         public async Task<IActionResult> CommentListByDestinationId(int id)
         {
-            return CreateAction(await _CommentReadService.GetListByDestinationIdAsync(id));
+            return CreateAction(await _CommentReadService.CommentAllWithAsppUserIncludeByIdAsync(id));
         }
         [HttpPost]
         public async Task<IActionResult> CommentCreate(CreateCommentDto createCommentDto)

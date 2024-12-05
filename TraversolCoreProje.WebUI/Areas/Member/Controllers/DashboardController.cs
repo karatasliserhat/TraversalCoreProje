@@ -20,5 +20,12 @@ namespace TraversolCoreProje.WebUI.Areas.Member.Controllers
             var data = await _userApiService.GetUserAsync(_userService.AccessToken);
             return View(data.Data);
         }
+
+        public async  Task<IActionResult> Index2()
+        {
+            ViewBag.T1 = "Dashboard";
+            var data = await _userApiService.GetUserAsync(_userService.AccessToken);
+            return View(data.Data);
+        }
     }
 }

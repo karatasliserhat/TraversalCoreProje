@@ -5,5 +5,6 @@ namespace TraversalCoreProje.BusinessLayer.Interfaces
 {
     public interface IVisitorReadService:IGenericReadService<ResultVisitorDto,Visitor>
     {
+        List<VisitorChartDto> GetVisitorChart();
     }
 }

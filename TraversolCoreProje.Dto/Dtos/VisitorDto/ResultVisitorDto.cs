@@ -1,11 +1,12 @@
-﻿namespace TraversolCoreProje.Dto.Dtos
+﻿using TraversolCoreProje.Dto.Dtos.Enums;
+
+namespace TraversolCoreProje.Dto.Dtos
 {
     public class ResultVisitorDto:ResultBaseDto
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string Mail { get; set; }
+        public ECity City { get; set; }
+        public int Count { get; set; }
+        public DateTime VisitorDate { get; set; }
+
     }
 }

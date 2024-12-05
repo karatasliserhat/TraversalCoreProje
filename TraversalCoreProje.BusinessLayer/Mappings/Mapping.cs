@@ -29,7 +29,17 @@ namespace TraversalCoreProje.BusinessLayer.Mappings
             CreateMap<ContactUs, CreateContactUsDto>().ReverseMap();
             CreateMap<ContactUs, UpdateContactUsDto>().ReverseMap();
 
-            CreateMap<Destination, ResultDestinationDto>().ReverseMap();
+            CreateMap<Destination, ResultDestinationDto>()
+                .ForMember(x => x
+                .GuidName, member => member.MapFrom(x => x
+                .Guide.Name))
+                .ForMember(x => x
+                .GuideImage, member => member.MapFrom(x => x
+                .Guide.Image))
+                .ForMember(x => x
+                .GuideDescription, member => member.MapFrom(x => x
+                .Guide.Description))
+                .ReverseMap();
             CreateMap<Destination, CreateDestinationDto>().ReverseMap();
             CreateMap<Destination, UpdateDestinationDto>().ReverseMap();
 
@@ -65,6 +75,15 @@ namespace TraversalCoreProje.BusinessLayer.Mappings
                 .ForMember(x => x
                 .DestinationCityName, member => member.MapFrom(x => x
                 .Destination.City))
+                .ForMember(x => x
+                .UserName, member => member.MapFrom(x => x
+                .AppUser.Name))
+                .ForMember(x => x
+                .UserSurname, member => member.MapFrom(x => x
+                .AppUser.Surname))
+                .ForMember(x => x
+                .ImageFile, member => member.MapFrom(x => x
+                .AppUser.ImageUrl))
                 .ReverseMap();
             CreateMap<Comment, CreateCommentDto>().ReverseMap();
             CreateMap<Comment, UpdateCommentDto>().ReverseMap();
@@ -77,6 +96,9 @@ namespace TraversalCoreProje.BusinessLayer.Mappings
                 .ForMember(x =>
                 x.PersonName, member => member.MapFrom(x => x
                 .AppUser.Name))
+                .ForMember(x =>
+                x.PersonSurname, member => member.MapFrom(x => x
+                .AppUser.Surname))
                 .ForMember(x =>
                 x.PersonSurname, member => member.MapFrom(x => x
                 .AppUser.Surname))

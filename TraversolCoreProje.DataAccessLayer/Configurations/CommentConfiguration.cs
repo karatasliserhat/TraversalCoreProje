@@ -9,6 +9,7 @@ namespace TraversolCoreProje.DataAccessLayer.Configurations
         public void Configure(EntityTypeBuilder<Comment> builder)
         {
             builder.HasOne(x => x.Destination).WithMany(x => x.Comments).HasForeignKey(x => x.DestinationId);
+            builder.HasOne(x => x.AppUser).WithMany(x => x.Comments).HasForeignKey(x => x.AppUserId);
         }
     }
 }

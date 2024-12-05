@@ -20,6 +20,7 @@ namespace TraversolCoreProje.WebUI.Areas.Member.Controllers
         [HttpGet]
         public async Task<IActionResult> UserProfile()
         {
+            ViewBag.T1 = "Profilim";
             var result = await _userApiService.GetUserUpdateAsync(_userService.AccessToken);
 
             return View(result.Data);

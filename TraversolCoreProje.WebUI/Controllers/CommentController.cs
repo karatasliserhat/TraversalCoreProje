@@ -26,6 +26,7 @@ namespace TraversolCoreProje.WebUI.Controllers
         {
             if (!ModelState.IsValid)
                 return RedirectToAction(nameof(DestinationController.DestinationDetail), "Destination", new { dataId = _dataProtector.Protect(createCommentViewModel.DestinationId.ToString()) });
+            createCommentViewModel.AppUserId = int.Parse(_userService.GetUser);
             createCommentViewModel.Status = true;
             createCommentViewModel.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             var result = await _commentCommandApiService.CreateAsync(createCommentViewModel, "");

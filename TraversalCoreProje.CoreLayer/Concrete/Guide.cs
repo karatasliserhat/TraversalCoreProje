@@ -9,5 +9,7 @@ namespace TraversalCoreProje.CoreLayer.Concrete
         public string Image { get; set; }
         public string TwitterUrl { get; set; }
         public string InstagramUrl { get; set; }
+
+        public virtual List<Destination> Destinations { get; set; }
     }
 }

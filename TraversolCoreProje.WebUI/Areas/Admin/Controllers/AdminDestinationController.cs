@@ -45,7 +45,7 @@ namespace TraversolCoreProje.WebUI.Areas.Admin.Controllers
                 var allErrors = ModelState.Values.SelectMany(v => v.Errors);
                 return Json(new { success = false, Errors = allErrors });
             }
-
+            updateDestinationViewModel.GuidId = int.Parse(_userService.GetUser);
             var result = await _destinationCommandApiService.CreateAsync(_mapper.Map<CreateDestinationViewModel>(updateDestinationViewModel), _userService.AccessToken);
             if (result.StatusCode == StatusCodes.Status201Created)
             {
@@ -74,7 +74,7 @@ namespace TraversolCoreProje.WebUI.Areas.Admin.Controllers
                 var allErrors = ModelState.Values.SelectMany(v => v.Errors);
                 return Json(new { success = false, Errors = allErrors });
             }
-               
+
             var result = await _destinationCommandApiService.UpdateAsync(updateDestinationViewModel, _userService.AccessToken);
             if (result.StatusCode == StatusCodes.Status204NoContent)
                 return Json("Rota Güncellendi");

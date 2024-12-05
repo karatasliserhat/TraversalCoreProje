@@ -94,6 +94,8 @@ namespace TraversalCoreProje.WebAPI.ServiceRegistiration
 
             Services.AddScoped<IGuideCommandRepository, GuideCommandRepository>();
 
+            Services.AddScoped<IDestinationReadRepository, DestinationReadRepository>();
+
 
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

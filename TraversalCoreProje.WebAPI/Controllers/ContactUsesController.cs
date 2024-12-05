@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 using TraversalCoreProje.BusinessLayer.Interfaces;
 using TraversolCoreProje.Dto.Dtos;
@@ -40,6 +41,7 @@ namespace TraversalCoreProje.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> ContactUsCreate(CreateContactUsDto createContactUsDto)
         {
+            createContactUsDto.MessageDate = DateTime.Now;
             return CreateAction(await _ContactUsCommandService.CreateAsync(createContactUsDto));
         }
         [HttpPut]

@@ -4,10 +4,8 @@ namespace TraversalCoreProje.CoreLayer.Concrete
 {
     public class Visitor:BaseEntity
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string Mail { get; set; }
+        public int City { get; set; }
+        public int Count { get; set; }
+        public DateTime VisitorDate { get; set; }
     }
 }

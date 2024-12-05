@@ -46,12 +46,16 @@ namespace TraversolCoreProje.WebUI.Areas.Member.Controllers
         [HttpGet]
         public async Task<IActionResult> MyCurrentReservation()
         {
+            ViewBag.T1 = "Rezervasyonlarım";
+
             var data = await _reservationReadApiService.GetAllAsync("GetMyCurrentReservation", getUserId(), _userService.AccessToken);
             return View(data.Data);
         }
         [HttpGet]
         public async Task<IActionResult> MyOldReservation()
         {
+            ViewBag.T1 = "Geçmiş Rezervasyonlar";
+
             //GEçmiş Rezervasyonlarım
             var data = await _reservationReadApiService.GetAllAsync("GetMyOldReservation", getUserId(), _userService.AccessToken);
             return View(data.Data);
@@ -60,6 +64,8 @@ namespace TraversolCoreProje.WebUI.Areas.Member.Controllers
         [HttpGet]
         public async Task<IActionResult> MyApprovalReservation()
         {
+            ViewBag.T1 = "Onay Bekleyen Rezervasyonlar";
+
             //Onay Bekleyen Rezervasyonlarım
             var data = await _reservationReadApiService.GetAllAsync("GetMyApprovedReservation", getUserId(), _userService.AccessToken);
             return View(data.Data);
@@ -68,6 +74,7 @@ namespace TraversolCoreProje.WebUI.Areas.Member.Controllers
         [HttpGet]
         public async Task<IActionResult> NewReservation()
         {
+            ViewBag.T1 = "Yeni Rezervasyonlar";
             await GetDestination();
             return View(new CreateReservationViewModel());
         }

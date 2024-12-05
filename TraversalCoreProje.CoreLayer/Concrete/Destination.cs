@@ -15,6 +15,9 @@ namespace TraversalCoreProje.CoreLayer.Concrete
         public string Details2 { get; set; }
         public string Image2 { get; set; }
 
+        public DateTime Date { get; set; }
+        public int? GuideId { get; set; }
+        public virtual Guide Guide { get; set; }
         public virtual List<Comment> Comments { get; set; }
         public virtual List<Reservation> Reservations { get; set; }
 

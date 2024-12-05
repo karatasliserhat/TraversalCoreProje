@@ -327,6 +327,9 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -339,10 +342,9 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("User")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("DestinationId");
 
@@ -428,6 +430,9 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
                     b.Property<string>("CoverImage")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("DayNight")
                         .HasColumnType("nvarchar(max)");
 
@@ -439,6 +444,9 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
 
                     b.Property<string>("Details2")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("GuideId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -453,6 +461,8 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GuideId");
 
                     b.ToTable("Destinations");
                 });
@@ -650,23 +660,17 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("City")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Surname")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("VisitorDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -726,13 +730,30 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
 
             modelBuilder.Entity("TraversalCoreProje.CoreLayer.Concrete.Comment", b =>
                 {
+                    b.HasOne("TraversalCoreProje.CoreLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("Comments")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("TraversalCoreProje.CoreLayer.Concrete.Destination", "Destination")
                         .WithMany("Comments")
                         .HasForeignKey("DestinationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("AppUser");
+
                     b.Navigation("Destination");
+                });
+
+            modelBuilder.Entity("TraversalCoreProje.CoreLayer.Concrete.Destination", b =>
+                {
+                    b.HasOne("TraversalCoreProje.CoreLayer.Concrete.Guide", "Guide")
+                        .WithMany("Destinations")
+                        .HasForeignKey("GuideId");
+
+                    b.Navigation("Guide");
                 });
 
             modelBuilder.Entity("TraversalCoreProje.CoreLayer.Concrete.Reservation", b =>
@@ -756,6 +777,8 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
 
             modelBuilder.Entity("TraversalCoreProje.CoreLayer.Concrete.AppUser", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Reservations");
                 });
 
@@ -764,6 +787,11 @@ namespace TraversolCoreProje.DataAccessLayer.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("TraversalCoreProje.CoreLayer.Concrete.Guide", b =>
+                {
+                    b.Navigation("Destinations");
                 });
 #pragma warning restore 612, 618
         }

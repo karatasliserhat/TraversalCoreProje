@@ -2,6 +2,7 @@
 {
     public class UpdateDestinationDto:UpdateBaseDto
     {
+        public int GuidId { get; set; }
         public string City { get; set; }
         public string DayNight { get; set; }
         public double Price { get; set; }

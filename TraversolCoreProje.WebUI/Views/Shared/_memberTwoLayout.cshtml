@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+@await Html.PartialAsync("/Views/Shared/MemberTwoLayoutPartial/_MemberTwoHeadPartial.cshtml")
+<body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+
+    <!-- fixed-top-->
+    @await Html.PartialAsync("/Views/Shared/MemberTwoLayoutPartial/_MemberTwoNavbarPartial.cshtml")
+
+
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+    @await Html.PartialAsync("/Views/Shared/MemberTwoLayoutPartial/_MemberTwoSidebarPartial.cshtml")
+
+
+
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-wrapper-before"></div>
+            <div class="content-header row">
+                <div class="content-header-left col-md-4 col-12 mb-2">
+                    <h3 class="content-header-title">@ViewBag.T1</h3>
+                </div>
+                <div class="content-header-right col-md-8 col-12">
+                    <div class="breadcrumbs-top float-md-right">
+                        <div class="breadcrumb-wrapper mr-1">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-controller="Dashboard" asp-action="Index">AnaSayfa</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    @ViewBag.T1
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+    @await Html.PartialAsync("/Views/Shared/MemberTwoLayoutPartial/_MemberTwoFooterPartial.cshtml")
+
+
+
+    @await Html.PartialAsync("/Views/Shared/MemberTwoLayoutPartial/_MemberTwoScriptPartial.cshtml")
+
+
+</body>
+</html>
