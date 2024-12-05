@@ -84,3 +84,20 @@
 <li>Menülerde çoklu dil desteği</li>
 </ul>
 <h3>Sitenin Görselleri</h3>
+
+![login](https://github.com/user-attachments/assets/1a8c40f1-0c60-47e3-9347-89a89a190a2c)
+![1](https://github.com/user-attachments/assets/5b34801e-48b3-46e4-9003-53b11ddd66d7)
+![2](https://github.com/user-attachments/assets/1163b21b-7500-46f2-bd54-b71ea90d8122)
+![3](https://github.com/user-attachments/assets/30cb5af3-71ab-4424-82b1-fd26a82644e1)
+![4](https://github.com/user-attachments/assets/f235066c-080d-44d6-bbb7-ef4e32eeefd9)
+![5](https://github.com/user-attachments/assets/91351194-8b12-49e1-b9eb-71aca991e71b)
+![6](https://github.com/user-attachments/assets/e5cd1669-4b2d-42fd-aedc-acf1ae52eb54)
+![7](https://github.com/user-attachments/assets/3c4aa05b-9f5f-4a51-8a11-ae81c77c6fc4)
+![8](https://github.com/user-attachments/assets/b2d9f144-74d2-412f-8143-2d0f61f3554e)
+![9](https://github.com/user-attachments/assets/611c9b34-af8c-4cfa-9a83-80faf647956b)
+![10](https://github.com/user-attachments/assets/d51e193f-30f7-4412-801b-351b81bdae2a)
+![11](https://github.com/user-attachments/assets/f8b11759-a3da-4c63-baed-f017f1080d9e)
+![12](https://github.com/user-attachments/assets/fc55ac52-de6b-43ed-a4c1-ded1333adc83)
+![13](https://github.com/user-attachments/assets/bb932170-e946-4251-8893-f5bfbc5e7f35)
+![14](https://github.com/user-attachments/assets/e35a380a-095a-4f7a-a283-4c9d006827e8)
+
